@@ -1,6 +1,7 @@
 from flask import Flask
 from app.config import config
 from flask_login import LoginManager
+import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
