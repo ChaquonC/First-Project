@@ -1,22 +1,22 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 
-class Character(db.Model):
-    __tabelname__ = "characters"
+class User(db.Model):
+    __tabelname__ = "users"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    name = db.Column(db.String(100), nullable=False)
-    sprite = db.Column(db.String(500), nullable=False)
-    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    username = db.Column(db.Sting(100), nullable=False)
+    email = db.Column(db.String(200), nullable=False)
+    password = db.Column(db.String(200), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
     def to_dict(self, timestamps=False):
         dictionary = {
             "id": self.id,
-            "name": self.name,
-            "sprite": self.sprite,
-            "ownerID": self.owner_id
+            "username": self.username,
+            "email": self.email,
+            "password": self.password
         }
 
         if timestamps:
