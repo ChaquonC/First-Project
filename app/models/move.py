@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
+from enum import Enum
 
 moves = Enum(
     "moves",
@@ -15,6 +16,8 @@ class Move():
     name = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    character = db.relationship("Character", back_populates="moves")
 
     def to_dict(self, timestamps=False):
         dictionary = {
