@@ -6,6 +6,7 @@ from flask_wtf.csrf import generate_csrf
 from flask_login import LoginManager
 from .Config import Config
 from .models import db, User
+from .seeds import seed_commands
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 app.config.from_object(Config)
@@ -19,7 +20,7 @@ def load_user(id):
     return User.query.get(int(id))
 
 # Tell Flask about seed commands
-# app.cli.add_command(seed_commands)
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 db.init_app(app)

@@ -27,6 +27,14 @@ def seed_characters():
         public=True
     )
 
+    db.session.add(character1)
+    db.session.add(character2)
+    db.session.add(character3)
+    db.session.add(character4)
+
+    db.session.commit()
+
+
 def undo_characters():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.characters RESTART IDENTITY CASCADE;")

@@ -23,6 +23,13 @@ def seed_items():
         item_effect=20
     )
 
+    db.session.add(heal1)
+    db.session.add(heal2)
+    db.session.add(armor)
+    db.session.add(attack)
+
+    db.session.commit()
+
 def undo_items():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.items RESTART IDENTITY CASCADE;")

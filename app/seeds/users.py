@@ -23,6 +23,13 @@ def seed_users():
         password="greatestofalltime47"
     )
 
+    db.session.add(demo)
+    db.session.add(demo2)
+    db.session.add(demo3)
+    db.session.add(demo4)
+
+    db.session.commit()
+
 def undo_users():
     if environment == "productions":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")

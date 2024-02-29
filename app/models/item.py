@@ -17,7 +17,7 @@ class Item(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
-    character = db.relationship("Character", back_populates="stats")
+    character = db.relationship("Character", back_populates="items")
 
     def to_dict(self, timestamps=False):
         dictionary = {

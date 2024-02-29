@@ -43,6 +43,17 @@ def seed_moves():
         name="Abyss Shriek"
     )
 
+    db.session.add(kirby_move1)
+    db.session.add(kirby_move2)
+    db.session.add(fortnite_move1)
+    db.session.add(fortnite_move2)
+    db.session.add(grinch_move1)
+    db.session.add(grinch_move2)
+    db.session.add(hollow_knight_move1)
+    db.session.add(hollow_knight_move2)
+
+    db.session.commit()
+
 def undo_moves():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.moves RESTART IDENTITY CASCADE;")

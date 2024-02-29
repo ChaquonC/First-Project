@@ -35,6 +35,13 @@ def seed_stats():
         resistance="slash"
     )
 
+    db.session.add(kirby_stats)
+    db.session.add(fortnite_stats)
+    db.session.add(grinch_stats)
+    db.session.add(hollow_stats)
+
+    db.session.commit()
+
 def undo_stats():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.stats RESTART IDENTITY CASCADE;")

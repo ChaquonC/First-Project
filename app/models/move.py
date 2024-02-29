@@ -7,7 +7,7 @@ moves = Enum(
     ["fire", "ice", "water", "earth", "wind", "electric", "slash", "gun", "bash", "consume"]
 )
 
-class Move():
+class Move(db.Model):
     __tablename__ = "moves"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
