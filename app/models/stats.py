@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from sqalchemy.sql import func
+from sqlalchemy.sql import func
 from enum import Enum
 
 #defining enum variable types
@@ -8,13 +8,13 @@ weak = Enum(
     ["fire", "ice", "water", "earth", "wind", "electric", "slash", "gun", "bash", "consume"]
 )
 
-resitance = Enum(
+resistance = Enum(
     "Resist",
     ["fire", "ice", "water", "earth", "wind", "electric", "slash", "gun", "bash", "consume"]
 )
 
 class Stats(db.Model):
-    __tabelname__ = "stats"
+    __tablename__ = "stats"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     character_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False)
@@ -25,6 +25,8 @@ class Stats(db.Model):
     resistance = db.Column(db.Enum(resistance), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+
+    character = db.relationship("Character", back_populates="stats")
 
 
     def to_dict(self, timestamps=False):

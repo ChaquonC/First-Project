@@ -6,7 +6,8 @@ from flask_wtf.csrf import generate_csrf
 from flask_login import LoginManager
 from .Config import Config
 from .models import db, User
-from .api import auth_routes
+from .seeds import seed_commands
+from .api import auth_routes, user_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 app.config.from_object(Config)
@@ -20,7 +21,7 @@ def load_user(id):
     return User.query.get(int(id))
 
 # Tell Flask about seed commands
-# app.cli.add_command(seed_commands)
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
