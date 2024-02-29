@@ -14,7 +14,7 @@ resistance = Enum(
 )
 
 class Stats(db.Model):
-    __tabelname__ = "stats"
+    __tablename__ = "stats"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     character_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False)

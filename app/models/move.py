@@ -8,7 +8,7 @@ moves = Enum(
 )
 
 class Move():
-    __tabelname__ = "moves"
+    __tablename__ = "moves"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     character_id = db.Column(db.String, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False)

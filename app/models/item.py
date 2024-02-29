@@ -8,7 +8,7 @@ item_type = Enum(
 )
 
 class Item(db.Model):
-    __tabelname__ = "items"
+    __tablename__ = "items"
 
     id =  db.Column(db.Integer, primary_key=True, nullable=False)
     character_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False)

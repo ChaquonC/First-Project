@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 
 class User(db.Model):
-    __tabelname__ = "users"
+    __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     username = db.Column(db.String(100), nullable=False)
