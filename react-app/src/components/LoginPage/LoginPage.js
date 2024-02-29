@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { login } from "../../store/session";
+import "./LoginPage.css";
 
 export default function LoginPage() {
   const dispatch = useDispatch();
@@ -20,14 +21,16 @@ export default function LoginPage() {
     }
   };
 
-  const handleDemoUser = (e) => {
-    e.preventDefault();
-    dispatch(login("Demo", "password"));
-  };
+//   const handleDemoUser = (e) => {
+//     e.preventDefault();
+//     dispatch(login("Demo", "password"));
+//   };
 
   return (
     <div className="login__div">
       <form onSubmit={handleSubmit} className="login__form">
+        <h1>Login</h1>
+
         <label className="login__label">
           Email or Username{" "}
           <input
@@ -36,7 +39,16 @@ export default function LoginPage() {
             value={credential}
             required
             onChange={(e) => setCredential(e.target.value)}
+            maxLength={200}
           />
+          {credential.length >= 200 && (
+            <span className="login__error">
+              Max Credential length has been reached
+            </span>
+          )}
+          {errors.credential && (
+            <span className="login__error">{errors.credential}</span>
+          )}
         </label>
 
         <label className="login__label">
@@ -46,11 +58,20 @@ export default function LoginPage() {
             type="password"
             value={password}
             required
+            maxLength={40}
             onChange={(e) => setPassword(e.target.value)}
           />
+          {password.length >= 40 && (
+            <span className="login__error">
+              Max Length for password has been reached
+            </span>
+          )}
+          {!errors.credential && errors.password && (
+            <span className="login__error">{errors.password}</span>
+          )}
         </label>
 
-        <button className="login__submit"></button>
+        <button className="login__submit">Login</button>
       </form>
     </div>
   );
