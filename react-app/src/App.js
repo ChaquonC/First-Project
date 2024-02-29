@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function App() {
             <h1>we MADE IT</h1>
         </div>
       )} */}
-      <h1>WOW</h1>
+      <LandingPage/>
     </>
   );
 }
