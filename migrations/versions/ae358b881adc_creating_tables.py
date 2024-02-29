@@ -1,8 +1,8 @@
-"""data base model missing for user
+"""creating tables
 
-Revision ID: bc4dd26e648a
+Revision ID: ae358b881adc
 Revises: 
-Create Date: 2024-02-28 20:35:54.759245
+Create Date: 2024-02-28 23:12:50.041525
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bc4dd26e648a'
+revision = 'ae358b881adc'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=100), nullable=False),
     sa.Column('email', sa.String(length=200), nullable=False),
-    sa.Column('password', sa.String(length=200), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.PrimaryKeyConstraint('id')
