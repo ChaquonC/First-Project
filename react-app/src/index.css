@@ -3,7 +3,7 @@
     height: 100vh;
     /* background-image: linear-gradient(rgb(26,26,26), rgb(0,0,0)); */
     background-image: linear-gradient(var(--primary-orange), var(--primary-white));
-  }
+
   height: 100vh;
   /* background-image: linear-gradient(rgb(26,26,26), rgb(0,0,0)); */
   background-image: linear-gradient(rgb(184, 184, 184), rgb(1, 1, 1));
