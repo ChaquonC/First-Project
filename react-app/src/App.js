@@ -5,6 +5,7 @@ import { authenticate, logout } from "./store/session"
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SignupPage from "./components/SignupPage/SignupPage";
 import LoginPage from "./components/LoginPage/LoginPage";
+import LandingPage from "./components/LandingPage/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function App() {
         <Switch>
 
         <Route exact path="/">
-          {/* <LandingPage /> */}
+          <LandingPage />
         </Route>
 
         <Route path="/main">

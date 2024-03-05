@@ -1,7 +1,11 @@
-import {Link} from "react-router-dom"
 import "./LandingPage.css"
 import kirby from "../../images/kirby.png"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+
 export default function LandingPage() {
+    const history = useHistory()
+    const handleSignup = () => {history.push("/signup")};
+    const handleLogin = () => {history.push("/login")};
     return (
         <div className="landing-page__div">
             <div className="landing-page__title-card">
@@ -16,12 +20,8 @@ export default function LandingPage() {
                 <img src={kirby} alt="kirby"/>
             </div>
             <div className="landing-page__account-buttons">
-                <Link to="/signup">
-                    <button>Sign Up</button>
-                </Link>
-                <Link to ="/signin">
-                    <button>Log In</button>
-                </Link>
+                    <button className="landing-page__signup" onClick={handleSignup}>Sign Up</button>
+                    <button className="landing-page__login" onClick={handleLogin}>Log In</button>
             </div>
             <div className="landing-page__demo-link">
                 <p>

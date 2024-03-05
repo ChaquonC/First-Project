@@ -3,10 +3,6 @@
     height: 100vh;
     /* background-image: linear-gradient(rgb(26,26,26), rgb(0,0,0)); */
     background-image: linear-gradient(var(--primary-orange), var(--primary-white));
-
-  height: 100vh;
-  /* background-image: linear-gradient(rgb(26,26,26), rgb(0,0,0)); */
-  background-image: linear-gradient(rgb(184, 184, 184), rgb(1, 1, 1));
 }
 
 *,
@@ -29,16 +25,6 @@ li {
   button {
     cursor: pointer;
   }
-
-  :root {
-    --primary-light-blue: rgb(140, 185, 189);
-    --primary-white: rgb(254, 251, 246);
-    --primary-orange: rgb(236, 177, 89);
-    --primary-grapefruit: rgb(182, 115, 82)
-  }
-button {
-  cursor: pointer;
-}
 
 :root {
   --primary-light-blue: rgb(140, 185, 189);
