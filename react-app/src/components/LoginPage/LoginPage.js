@@ -21,58 +21,63 @@ export default function LoginPage() {
     }
   };
 
-//   const handleDemoUser = (e) => {
-//     e.preventDefault();
-//     dispatch(login("Demo", "password"));
-//   };
+  const handleDemoUser = (e) => {
+    e.preventDefault();
+    dispatch(login("Demo", "password"));
+  };
 
   return (
     <div className="login__div">
-      <form onSubmit={handleSubmit} className="login__form">
-        <h1>Login</h1>
+      <div className="login__container">
+        <form onSubmit={handleSubmit} className="login__form">
+          <h1>Login</h1>
 
-        <label className="login__label">
-          Email or Username{" "}
-          <input
-            className="login__input"
-            type="text"
-            value={credential}
-            required
-            onChange={(e) => setCredential(e.target.value)}
-            maxLength={200}
-          />
-          {credential.length >= 200 && (
-            <span className="login__error">
-              Max Credential length has been reached
-            </span>
-          )}
-          {errors.credential && (
-            <span className="login__error">{errors.credential}</span>
-          )}
-        </label>
+          <label className="login__label">
+            Email or Username{" "}
+            <input
+              className="login__input"
+              type="text"
+              value={credential}
+              required
+              onChange={(e) => setCredential(e.target.value)}
+              maxLength={200}
+            />
+            {credential.length >= 200 && (
+              <span className="login__error">
+                Max Credential length has been reached
+              </span>
+            )}
+            {errors.credential && (
+              <span className="login__error">{errors.credential}</span>
+            )}
+          </label>
 
-        <label className="login__label">
-          Password{" "}
-          <input
-            className="login__input"
-            type="password"
-            value={password}
-            required
-            maxLength={40}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {password.length >= 40 && (
-            <span className="login__error">
-              Max Length for password has been reached
-            </span>
-          )}
-          {!errors.credential && errors.password && (
-            <span className="login__error">{errors.password}</span>
-          )}
-        </label>
+          <label className="login__label">
+            Password{" "}
+            <input
+              className="login__input"
+              type="password"
+              value={password}
+              required
+              maxLength={40}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {password.length >= 40 && (
+              <span className="login__error">
+                Max Length for password has been reached
+              </span>
+            )}
+            {!errors.credential && errors.password && (
+              <span className="login__error">{errors.password}</span>
+            )}
+          </label>
 
-        <button className="login__submit">Login</button>
-      </form>
+          <button className="login__submit">Logins</button>
+        </form>
+        <div className="login__demo-users">
+          <button onClick={handleDemoUser} className="login__demo1">Demo Userssssss</button>
+        </div>
+      </div>
     </div>
   );
 }
