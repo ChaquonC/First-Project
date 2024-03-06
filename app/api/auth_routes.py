@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import User, db
 from app.forms import LoginForm, SignUpForm
-from flask_login import current_user, login_user, login_required
+from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy import or_
 
 auth_routes = Blueprint("auth", __name__)
@@ -26,7 +26,7 @@ def authenticate():
 def login():
     form = LoginForm()
 
-    form["csrf_token"].data = request.cookies[csrf_token]
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         user = User.query.filter(
             or_(
@@ -53,7 +53,7 @@ def sign_up():
         user = User(
             username=form.data["username"],
             email=form.data["email"],
-            password=form.data["password"],
+            password=form.data["password"]
         )
         db.session.add(user)
         db.session.commit()

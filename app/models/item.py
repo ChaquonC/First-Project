@@ -2,16 +2,19 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from enum import Enum
 
-item_type = Enum(
-    "Type",
-    ["heal", "armor_up", "attack_up"]
-)
+item_type = Enum("Type", ["heal", "armor_up", "attack_up"])
+
 
 class Item(db.Model):
     __tablename__ = "items"
 
-    id =  db.Column(db.Integer, primary_key=True, nullable=False)
-    character_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False)
+    if environment == "production":
+        __table_args__ = {"schema": SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True, nullable=False)
+    character_id = db.Column(
+        db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False
+    )
     item_type = db.Column(db.Enum(item_type), nullable=False)
     item_effect = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
@@ -24,7 +27,7 @@ class Item(db.Model):
             "id": self.id,
             "characterID": self.character_id,
             "itemType": self.item_type,
-            "itemEffect": self.item_effect
+            "itemEffect": self.item_effect,
         }
 
         if timestamps:

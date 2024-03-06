@@ -1,27 +1,44 @@
 /* TODO Add site wide styles */
 #root {
     height: 100vh;
-    /* background-image: linear-gradient(rgb(26,26,26), rgb(0,0,0)); */
-    background-image: linear-gradient(rgb(184, 184, 184), rgb(1,1,1));
-  }
+    background-image: linear-gradient(var(--primary-color1), var(--primary-color2));
+}
 
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  * {
-    font-family: "Helvetica Neue", sans-serif;
-  }
+* {
+  font-family: "Helvetica Neue", sans-serif;
+}
 
-  ul,
-  li {
-    list-style: none;
-  }
+ul,
+li {
+  list-style: none;
+}
 
   button {
     cursor: pointer;
   }
+
+:root {
+  --primary-light-blue: rgb(140, 185, 189);
+  --primary-white: rgb(254, 251, 246);
+  --primary-orange: rgb(236, 177, 89);
+  --primary-grapefruit: rgb(182, 115, 82);
+
+  /* Headers, Titles Darkest Color*/
+  --primary-color1:rgba(0, 32, 48, 1);
+  /* accents */
+  --primary-color2:rgba(18, 103, 138, 1);
+  /* buttons */
+  --primary-color3:rgba(68, 196, 175, 1);
+  /* idk */
+  --primary-color4:rgba(153, 234, 162, 1);
+  /* im not creative  Lightest Color*/
+  --primary-color5:rgba(217, 252, 186, 1);
+}
