@@ -51,45 +51,7 @@ export default function LoginPage() {
               <span className="login__error">{errors.credential}</span>
             )}
           </label>
-          <label className="login__label">
-            Email or Username{" "}
-            <input
-              className="login__input"
-              type="text"
-              value={credential}
-              required
-              onChange={(e) => setCredential(e.target.value)}
-              maxLength={200}
-            />
-            {credential.length >= 200 && (
-              <span className="login__error">
-                Max Credential length has been reached
-              </span>
-            )}
-            {errors.credential && (
-              <span className="login__error">{errors.credential}</span>
-            )}
-          </label>
 
-          <label className="login__label">
-            Password{" "}
-            <input
-              className="login__input"
-              type="password"
-              value={password}
-              required
-              maxLength={40}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {password.length >= 40 && (
-              <span className="login__error">
-                Max Length for password has been reached
-              </span>
-            )}
-            {!errors.credential && errors.password && (
-              <span className="login__error">{errors.password}</span>
-            )}
-          </label>
           <label className="login__label">
             Password{" "}
             <input
