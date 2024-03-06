@@ -26,19 +26,16 @@ li {
   }
 
 :root {
-  --primary-light-blue: rgb(140, 185, 189);
-  --primary-white: rgb(254, 251, 246);
-  --primary-orange: rgb(236, 177, 89);
-  --primary-grapefruit: rgb(182, 115, 82);
-
   /* Headers, Titles Darkest Color*/
   --primary-color1:rgba(0, 32, 48, 1);
   /* accents */
   --primary-color2:rgba(18, 103, 138, 1);
-  /* buttons */
-  --primary-color3:rgba(68, 196, 175, 1);
+  /* on hover buttons and taskbar*/
+  --primary-color3:rgb(140, 185, 189);
   /* idk */
   --primary-color4:rgba(153, 234, 162, 1);
   /* im not creative  Lightest Color*/
   --primary-color5:rgba(217, 252, 186, 1);
+  /* white */
+  --primary-white: rgb(254, 251, 246);
 }
