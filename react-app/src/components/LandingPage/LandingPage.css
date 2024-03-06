@@ -39,6 +39,8 @@
     height: 50px;
     background-color: var(--primary-orange);
     box-shadow: 5px 5px 5px #778899;
+    font-family: "copperplate";
+    font-size: 30px;
 }
 
 .landing-page__account-buttons>button:hover {

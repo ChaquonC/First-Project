@@ -20,7 +20,7 @@ export default function NavBar() {
   return (
     <div className="navbar__div">
       <Link to={"/main"} className="navbar__home">
-        <img src={fake_mon_home_icon} alt="home icon" />
+        <img className="navbar__home-image" src={fake_mon_home_icon} alt="home icon" />
       </Link>
       <Link to={"/about"} className="navbar__about">
         <p>About</p>
