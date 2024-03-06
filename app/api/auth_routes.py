@@ -26,7 +26,7 @@ def authenticate():
 def login():
     form = LoginForm()
 
-    form["csrf_token"].data = request.cookies[csrf_token]
+    form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         user = User.query.filter(
             or_(

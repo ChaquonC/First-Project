@@ -2,10 +2,31 @@
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: var(--primary-grapefruit);
+}
+
+.login__container {
+    background-color: var(--primary-light-blue);
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+}
+
+.login__demo-users {
+    display: flex;
+    width: 200px;
+    height: 300px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login__demo1 {
+    width: 150px;
+    padding: 15px;
 }
 
 .login__form {
@@ -13,10 +34,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-light-blue);
+
     color: white;
     padding: 30px;
-    border-radius: 15px;
     gap: 20px;
 }
 
@@ -36,7 +56,7 @@
 
 .login__submit {
     width: 150px;
-    height: 30px;
+    height: 25px;
     font-size: medium;
     border-radius: 30px;
     border: none;

@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired, Email, ValidationError
+from app.models import User
 from sqlalchemy import or_
 
 def user_exists(form, field):
