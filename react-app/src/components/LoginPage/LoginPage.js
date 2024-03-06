@@ -31,9 +31,6 @@ export default function LoginPage() {
       <div className="login__container">
         <form onSubmit={handleSubmit} className="login__form">
           <h1>Login</h1>
-      <div className="login__container">
-        <form onSubmit={handleSubmit} className="login__form">
-          <h1>Login</h1>
 
           <label className="login__label">
             Email or Username{" "}
@@ -116,7 +113,9 @@ export default function LoginPage() {
           <button className="login__submit">Login</button>
         </form>
         <div className="login__demo-users">
-          <button onClick={handleDemoUser} className="login__demo1">Demo User</button>
+          <button onClick={handleDemoUser} className="login__demo1">
+            Demo User
+          </button>
         </div>
       </div>
     </div>
