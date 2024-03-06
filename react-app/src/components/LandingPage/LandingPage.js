@@ -23,11 +23,6 @@ export default function LandingPage() {
                     <button className="landing-page__signup" onClick={handleSignup}>Sign Up</button>
                     <button className="landing-page__login" onClick={handleLogin}>Log In</button>
             </div>
-            <div className="landing-page__demo-link">
-                <p>
-                    Demo Mode
-                </p>
-            </div>
         </div>
     );
 }
