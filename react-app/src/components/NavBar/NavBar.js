@@ -35,7 +35,7 @@ export default function NavBar() {
         <ul className="navbar__dropdown-menu">
           <li>
             <Link
-              to={"/main/manageCharactes"}
+              to={"/main/manage-characters"}
               className="dropdown-menu__characters"
             >
               Manage Characters

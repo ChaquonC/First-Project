@@ -6,7 +6,7 @@ export default function GameSelector() {
     const handleGame1 = () => {history.push("/main/game1")}
     const handleGame2 = () => {history.push("/main/game2")}
     const handleGame3 = () => {history.push("/main/game3")}
-    const handleManageCharacters = () => {history.push("/main/manager-characters")}
+    const handleManageCharacters = () => {history.push("/main/manage-characters")}
   return (
     <div className="game-selector">
       <div className="game-selector__header">
