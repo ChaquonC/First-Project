@@ -1,9 +1,8 @@
 .navbar__div {
-    border: 2px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: var(--primary-light-blue);
+    background-color: var(--primary-color3);
     align-items: center;
 }
 
@@ -14,35 +13,39 @@
 
 .navbar__about {
     text-decoration: none;
-    color: black;
+    color: var(--primary-color2);
     font-size: 30px;
     font-weight: bold;
+    font-family: "Copperplate";
 }
 
 .navbar__about:hover {
-    color: var(--primary-grapefruit)
+    color: var(--primary-color5);
 }
 
 .navbar__characters {
     text-decoration: none;
-    color: black;
+    color: var(--primary-color2);
     font-size: 30px;
     font-weight: bold;
+    font-family: "Copperplate";
 }
 
 .navbar__characters:hover {
-    color: var(--primary-grapefruit)
+    color: var(--primary-color5);
 }
 
 .navbar__profile {
     font-size: 30px;
     background: none;
     border: none;
+    color: var(--primary-color2);
     font-weight: bold;
+    font-family: "Copperplate";
 }
 
 .navbar__profile:hover {
-    color: var(--primary-grapefruit)
+    color: var(--primary-color5);
 }
 
 .navbar__dropdown-menu {

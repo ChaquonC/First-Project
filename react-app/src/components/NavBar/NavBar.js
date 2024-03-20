@@ -23,10 +23,10 @@ export default function NavBar() {
         <img className="navbar__home-image" src={fake_mon_home_icon} alt="home icon" />
       </Link>
       <Link to={"/about"} className="navbar__about">
-        <p>About</p>
+        About
       </Link>
       <Link to={"/characters"} className="navbar__characters">
-        <p>Characters</p>
+        Characters
       </Link>
       <button onClick={handleDropdown} className="navbar__profile">
         {user.username}
@@ -35,7 +35,7 @@ export default function NavBar() {
         <ul className="navbar__dropdown-menu">
           <li>
             <Link
-              to={"/main/manageCharactes"}
+              to={"/main/manage-characters"}
               className="dropdown-menu__characters"
             >
               Manage Characters
