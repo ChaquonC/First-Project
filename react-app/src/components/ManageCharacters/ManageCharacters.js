@@ -22,6 +22,7 @@ export default function ManageCharacters() {
                     return (<li>
                         <h1>{character.name}</h1>
                         <h2>{character.ownerID}</h2>
+                        <img src={character.sprite}></img>
                     </li>)
                 })}
             </ul>

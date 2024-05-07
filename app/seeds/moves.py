@@ -58,6 +58,6 @@ def undo_moves():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.moves RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM items"))
+        db.session.execute(text("DELETE FROM moves"))
 
     db.session.commit()
