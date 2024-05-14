@@ -4,6 +4,8 @@ import "./ManageCharacters.css";
 import { useEffect } from "react";
 import { thunkGetUserCharacters } from "../../store/character";
 import ManageCharacterCard from "./ManageCharacterCard";
+import OpenModalButton from "../OpenModalButton";
+import ManageCharacterCreate from "./ManageCharacterCreate";
 
 export default function ManageCharacters() {
     const user = useSelector((state) => state.session.user);
@@ -23,6 +25,9 @@ export default function ManageCharacters() {
                     return <ManageCharacterCard character={character} />
                 })}
             </ul>
+            <OpenModalButton
+            modalComponent={<ManageCharacterCreate/>}
+            />
         </div>
     )
 }

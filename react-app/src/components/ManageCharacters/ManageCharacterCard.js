@@ -11,9 +11,9 @@ export default function ManageCharacterCard({ character }) {
 
             <OpenModalButton
                 // modalComponent={}
-                buttonText={"EDIT"}
                 buttonClass={"manageCharacterCard__delete"}
-            />
+                buttonText={"EDIT"}
+                />
 
             <OpenModalButton
                 // modalComponent={}
