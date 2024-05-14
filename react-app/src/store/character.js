@@ -1,10 +1,21 @@
 // constants
 const GET_USER_CHARACTERS = "character/GET_USER_CHARACTERS"
+const CLEAR_USER_CHARACTERS = "character/CLEAR_USER_CHARACTERS"
+const CREATE_USER_CHARACTER = "character/CREATE_USER_CHARACTER"
 
 // actions
 const actionGetUserCharacters = (characters) => ({
     type: GET_USER_CHARACTERS,
     payload: characters
+})
+
+export const actionClearUserCharacters = () => ({
+    type: CLEAR_USER_CHARACTERS
+})
+
+const actionCreateUserCharacter = (character) => ({
+    type: CREATE_USER_CHARACTER,
+    payload: character
 })
 
 
@@ -28,6 +39,7 @@ export const thunkGetUserCharacters = () => async (dispatch) => {
     }
 }
 
+
 const initialState = {userCharacters: {}}
 
 export default function reducer(state = initialState, action) {
@@ -37,6 +49,8 @@ export default function reducer(state = initialState, action) {
                 ...state.userCharacters,
                 ...action.payload,
             }};
+        case CLEAR_USER_CHARACTERS:
+            return {userCharacters: {}}
         default:
             return state;
     }

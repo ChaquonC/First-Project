@@ -4,12 +4,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
 import fake_mon_home_icon from "../../images/fake_mon_home_icon.png"
+import { actionClearUserCharacters } from "../../store/character";
 
 export default function NavBar() {
   const [dropped, setDropped] = useState(false);
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const handleLogout = async () => {
+
+    await dispatch(actionClearUserCharacters())
     await dispatch(logout());
   };
 
