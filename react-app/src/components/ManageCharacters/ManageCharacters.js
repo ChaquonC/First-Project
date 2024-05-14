@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "./ManageCharacters.css";
 import { useEffect } from "react";
 import { thunkGetUserCharacters } from "../../store/character";
+import ManageCharacterCard from "./ManageCharacterCard";
 
 export default function ManageCharacters() {
     const user = useSelector((state) => state.session.user);
@@ -19,10 +20,7 @@ export default function ManageCharacters() {
         <div className="managecharacters__div">
             <ul>
                 {characters.map(character => {
-                    return (<li>
-                        <h1>{character.name}</h1>
-                        <h2>{character.ownerID}</h2>
-                    </li>)
+                    return <ManageCharacterCard character={character} />
                 })}
             </ul>
         </div>
