@@ -39,6 +39,19 @@ export const thunkGetUserCharacters = () => async (dispatch) => {
     }
 }
 
+export const thunkCreateUserCharacters = (formData) => async (dispatch) => {
+    const response = await fetch("/api/characters/createUserCharacter", {
+        method: "POST",
+        body: formData
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+
+        console.log(data)
+    }
+}
+
 
 const initialState = {userCharacters: {}}
 
