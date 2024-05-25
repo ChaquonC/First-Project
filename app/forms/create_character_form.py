@@ -6,15 +6,31 @@ from flask_wtf.file import FileField, FileAllowed, FileRequired
 from ..api.aws_helpers import ALLOWED_IMAGE_EXTENSIONS
 
 
+# tester function to see values
+def checkin_value_temp(form, field):
+    print("__________________________________________________")
+    print(field)
+    print(field.data)
+    print(type(field.data))
+    print("__________________________________________________")
+
 class CreateCharacterForm(FlaskForm):
+
+    # character fields
+    name = StringField("name", validators=[DataRequired()])
+    sprite = FileField('sprite', validators=[FileRequired(), FileAllowed(list(ALLOWED_IMAGE_EXTENSIONS))])
+
+    #stats fields
     hp = IntegerField('hp', validators=[DataRequired()])
     armor = IntegerField('armor', validators=[DataRequired()])
     damage = IntegerField('damage', validators=[DataRequired()])
     weakness = StringField('weakness', validators=[DataRequired()])
     resistance = StringField('resistance', validators=[DataRequired()])
-    move1_name = StringField('first_move', validators=[DataRequired()])
-    move1_type = StringField('first_move_type', validators=[DataRequired()])
-    move2_name = StringField('second_move', validators=[DataRequired()])
-    move2_type = StringField('second_move_type', validators=[DataRequired()])
-    image = FileField('image', validators=[FileRequired(), FileAllowed(list(ALLOWED_IMAGE_EXTENSIONS))])
+
+    #move fields
+    firstMoveName = StringField('firstMoveName', validators=[DataRequired()])
+    firstMoveType = StringField('firstMoveType', validators=[DataRequired()])
+    secondMoveName = StringField('secondMoveName', validators=[DataRequired()])
+    secondMoveType = StringField('secondMoveType', validators=[DataRequired()])
+
     submit = SubmitField('Submit')

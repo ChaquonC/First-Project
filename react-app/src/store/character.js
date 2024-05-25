@@ -46,24 +46,31 @@ export const thunkCreateUserCharacters = (formData) => async (dispatch) => {
     });
 
     if (response.ok) {
-        const data = await response.json();
-
-        console.log(data)
+        const character = await response.json();
+        dispatch(actionCreateUserCharacter(character))
+    } else {
+        const error = await response.json()
+        return error
     }
 }
 
 
-const initialState = {userCharacters: {}}
+const initialState = { userCharacters: { } }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_USER_CHARACTERS:
-            return {...state, userCharacters: {
+            return { ...state, userCharacters: {
                 ...state.userCharacters,
                 ...action.payload,
             }};
+
         case CLEAR_USER_CHARACTERS:
-            return {userCharacters: {}}
+            return { userCharacters: { } }
+
+        case CREATE_USER_CHARACTER:
+            return { ...state, userCharacters: { ...state.userCharacters, [action.payload.id] : action.payload } }
+
         default:
             return state;
     }

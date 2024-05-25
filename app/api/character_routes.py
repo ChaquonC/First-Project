@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Character, Stats, Move
+from app.models import db, User, Character, Stats, Move
 from ..forms import CreateCharacterForm
 from .aws_helpers import get_unique_filename, upload_file_to_s3
 
@@ -31,14 +31,31 @@ def get_user_characters():
 @character_routes.route('/createUserCharacter', methods=["POST"])
 @login_required
 def create_user_character():
-    print("___________________________________________________________________________________8===D____________________")
-    print("___________________________________________________________________________________8===D____________________")
 
     form = CreateCharacterForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
 
+    form.data["user_id"] = current_user.id
+
+    # print("__________________________________________________")
+    # print(form["name"])
+    # print(form["hp"])
+    # print(form["armor"])
+    # print(form["damage"])
+    # print(form["image"])
+    # print(form["weakness"])
+    # print(form["resistance"])
+    # print(form["first_move"])
+    # print(form["second_move"])
+    # print(form["first_move_type"])
+    # print(form["second_move_type"])
+    # print("__________________________________________________")
+
     if form.validate_on_submit():
-        image = form.data["image"]
+        print("__________________________________________________")
+        print("Successfully validated")
+        print("__________________________________________________")
+        image = form.data["sprite"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
         if "url" not in upload:
@@ -65,14 +82,14 @@ def create_user_character():
 
         new_move1 = Move(
             character_id = new_character.id,
-            name = form.data["first_move"],
-            move_type = form.data["first_move_type"],
+            name = form.data["firstMoveName"],
+            move_type = form.data["firstMoveType"],
         )
 
         new_move2 = Move(
             character_id = new_character.id,
-            name = form.data["second_move"],
-            move_type = form.data["second_move_type"],
+            name = form.data["secondMoveName"],
+            move_type = form.data["secondMoveType"],
         )
 
         db.session.add(new_stats)
@@ -81,4 +98,6 @@ def create_user_character():
         db.session.commit()
 
         return new_character.to_dict()
-    return {"error": validation_errors_to_dict(form.errors)}, 400
+        return { "KEKW" : 52}
+
+    return {"errors": validation_errors_to_dict(form.errors)}, 400

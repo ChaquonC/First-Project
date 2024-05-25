@@ -2,8 +2,7 @@ import "./MainPage.css";
 import {
   Redirect,
   Route,
-  Switch,
-  useHistory,
+  Switch
 } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../NavBar/NavBar";
 import { useSelector } from "react-redux";

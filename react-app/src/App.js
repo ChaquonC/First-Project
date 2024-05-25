@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { authenticate, logout } from "./store/session";
+import { authenticate } from "./store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SignupPage from "./components/SignupPage/SignupPage";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -17,9 +17,10 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const handleLogout = async (e) => {
-    dispatch(logout());
-  };
+  if (!user) {
+    return (<Redirect to="/" />)
+  }
+
   return (
     <>
       {isLoaded && (

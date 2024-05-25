@@ -2,8 +2,28 @@
     border: 5px solid yellow;
     width: 250px;
     height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .mcc__img {
-    width: 100%;
+    width: 50%;
+    height: 50%;
+    align-self: cent;
+}
+
+.mcc__name {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: white;
+    text-align: center;
+}
+
+.mcc__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
