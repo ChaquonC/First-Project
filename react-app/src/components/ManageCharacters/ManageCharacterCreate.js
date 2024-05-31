@@ -59,7 +59,7 @@ export default function ManageCharacterCreate() {
     }
   }, [armor, damage, availablePoints]);
 
-  //Big Validator useEffect make sure values are
+  //Big Validator useEffect make sure values are valid
   useEffect(() => {
     let temp = {};
 
@@ -118,7 +118,7 @@ export default function ManageCharacterCreate() {
   const handleCreateSubmit = async (e) => {
     e.preventDefault();
 
-    //only attempt to make an api request if the form has no erros
+    //only attempt to make an api request if the form has no errors
     if (Object.values(localErrors).length === 0) {
       const formData = new FormData();
 

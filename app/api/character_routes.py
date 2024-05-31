@@ -37,24 +37,7 @@ def create_user_character():
 
     form.data["user_id"] = current_user.id
 
-    # print("__________________________________________________")
-    # print(form["name"])
-    # print(form["hp"])
-    # print(form["armor"])
-    # print(form["damage"])
-    # print(form["image"])
-    # print(form["weakness"])
-    # print(form["resistance"])
-    # print(form["first_move"])
-    # print(form["second_move"])
-    # print(form["first_move_type"])
-    # print(form["second_move_type"])
-    # print("__________________________________________________")
-
     if form.validate_on_submit():
-        print("__________________________________________________")
-        print("Successfully validated")
-        print("__________________________________________________")
         image = form.data["sprite"]
         image.filename = get_unique_filename(image.filename)
         upload = upload_file_to_s3(image)
@@ -67,7 +50,6 @@ def create_user_character():
             owner_id = current_user.id,
             public = False,
         )
-        print(new_character)
         db.session.add(new_character)
         db.session.commit()
 
@@ -98,6 +80,17 @@ def create_user_character():
         db.session.commit()
 
         return new_character.to_dict()
-        return { "KEKW" : 52}
 
     return {"errors": validation_errors_to_dict(form.errors)}, 400
+
+@character_routes.route('/delete/<int:characterId>',methods = ["DELETE"])
+@login_required
+def delete_user_character(characterId):
+    character = Character.query.get(characterId)
+
+    if character is None or character.owner_id != current_user.id:
+        return {"error": "nu uh uh"}
+
+    db.session.delete(character)
+    db.session.commit()
+    return {"ok": "we good"}

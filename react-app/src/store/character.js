@@ -2,6 +2,7 @@
 const GET_USER_CHARACTERS = "character/GET_USER_CHARACTERS"
 const CLEAR_USER_CHARACTERS = "character/CLEAR_USER_CHARACTERS"
 const CREATE_USER_CHARACTER = "character/CREATE_USER_CHARACTER"
+const DELETE_USER_CHARACTER = "character/DELETE_USER_CHARACTER"
 
 // actions
 const actionGetUserCharacters = (characters) => ({
@@ -16,6 +17,11 @@ export const actionClearUserCharacters = () => ({
 const actionCreateUserCharacter = (character) => ({
     type: CREATE_USER_CHARACTER,
     payload: character
+})
+
+const actionDeleteUserCharacter = (characterID) => ({
+    type: DELETE_USER_CHARACTER,
+    payload: characterID
 })
 
 
@@ -54,6 +60,12 @@ export const thunkCreateUserCharacters = (formData) => async (dispatch) => {
     }
 }
 
+export const thunkDeleteUserCharacters = (characterID) => async (dispatch) => {
+    const response = await fetch(`/api/characters/delete/${characterID}`, {
+        method: "DELETE",
+    })
+}
+
 
 const initialState = { userCharacters: { } }
 
@@ -66,11 +78,20 @@ export default function reducer(state = initialState, action) {
             }};
 
         case CLEAR_USER_CHARACTERS:
-            return { userCharacters: { } }
+            return {...state,  userCharacters: { } }
 
         case CREATE_USER_CHARACTER:
             return { ...state, userCharacters: { ...state.userCharacters, [action.payload.id] : action.payload } }
 
+        case DELETE_USER_CHARACTER:
+            let newObj = {}
+            let oldObj = state.userCharacters
+            for (let characterID in oldObj) {
+                if (characterID !== action.payload) {
+                    newObj[characterID] = oldObj[characterID]
+                }
+            }
+            return {...state, userCharacters: newObj }
         default:
             return state;
     }

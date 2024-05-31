@@ -17,9 +17,9 @@ function App() {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  if (!user) {
-    return (<Redirect to="/" />)
-  }
+  // if (!user) {
+  //   return (<Redirect to="/" />)
+  // }
 
   return (
     <>
