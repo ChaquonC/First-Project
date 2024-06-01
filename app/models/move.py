@@ -40,7 +40,7 @@ class Move(db.Model):
         dictionary = {
             "id": self.id,
             "characterID": self.character_id,
-            "moveType": self.move_type,
+            "moveType": self.move_type.name,
             "name": self.name,
         }
 

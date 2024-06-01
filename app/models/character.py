@@ -1,5 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
+from .move import Move
+from .stats import Stats
 
 
 class Character(db.Model):
@@ -24,11 +26,16 @@ class Character(db.Model):
     items = db.relationship("Item", back_populates="character", cascade="all, delete")
 
     def to_dict(self, timestamps=False):
+        moves = [move.to_dict() for move in self.moves]
+        stats = self.stats[0].to_dict()
         dictionary = {
             "id": self.id,
             "name": self.name,
             "sprite": self.sprite,
             "ownerID": self.owner_id,
+            "move1": moves[0],
+            "move2": moves[1],
+            "stats": stats,
         }
 
         if timestamps:
