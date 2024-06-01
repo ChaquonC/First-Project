@@ -136,7 +136,7 @@ export default function ManageCharacterCreate() {
 
       let res = await dispatch(thunkCreateUserCharacters(formData));
 
-      if (res.errors) {
+      if (res && res.errors) {
         let temp = {};
         for (let error in res.errors) {
           temp[error] = res.errors[error];

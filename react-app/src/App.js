@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import { authenticate } from "./store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
@@ -11,7 +11,7 @@ import MainPage from "./components/MainPage/MainPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));

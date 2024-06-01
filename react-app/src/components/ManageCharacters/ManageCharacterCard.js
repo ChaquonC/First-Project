@@ -1,8 +1,8 @@
 import "./ManageCharacterCard.css";
 import OpenModalButton from "../OpenModalButton";
+import ManageCharacterDelete from "./ManageCharacterDelete";
 
 export default function ManageCharacterCard({ character }) {
-  console.log(character);
   return (
     <li key={character.id} className="mcc__li">
       {/* test image until we get aws s3 buckets setup */}
@@ -17,7 +17,7 @@ export default function ManageCharacterCard({ character }) {
         />
 
         <OpenModalButton
-          // modalComponent={}
+          modalComponent={<ManageCharacterDelete character={character}/>}
           buttonText={"DELETE"}
           buttonClass={"manageCharacterCard__delete"}
         />
