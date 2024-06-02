@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { authenticate, logout } from "./store/session";
+import { authenticate } from "./store/session";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SignupPage from "./components/SignupPage/SignupPage";
 import LoginPage from "./components/LoginPage/LoginPage";
@@ -11,15 +11,16 @@ import MainPage from "./components/MainPage/MainPage";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const handleLogout = async (e) => {
-    dispatch(logout());
-  };
+  // if (!user) {
+  //   return (<Redirect to="/" />)
+  // }
+
   return (
     <>
       {isLoaded && (

@@ -1,4 +1,4 @@
-.create-character__div {
+.edit-character__div {
     width: 600px;
     background-color: gray;
     border-radius: 10px;
@@ -6,27 +6,27 @@
     padding: 20px;
 }
 
-.create-character__form {
+.edit-character__form {
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
     padding-top: 20px;
 }
 
-.create-character__image {
+.edit-character__image {
     width: 200px;
     height: 200px;
 }
 
-.create-character__img-label {
+.edit-character__img-label {
     width: 200px;
 }
 
-.create-character__img-label > input {
+.edit-character__img-label > input {
     width: fit-content;
 }
 
-.create-character__info {
+.edit-character__info {
     display: flex;
     flex-direction: column;
     /* gap: 20px; */
@@ -36,40 +36,37 @@
     gap: 15px;
 }
 
-.create-character__section1 {
+.edit-character__section1 {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.create-character__section2 {
+.edit-character__section2 {
     display: flex;
     flex-direction: row;
     padding-bottom: 10px;
 }
 
-.create-character__section3 {
+.edit-character__section3 {
     display: flex;
     flex-direction: column;
     padding-bottom: 10px;
     gap: 15px;
 }
 
-.create-character__section4 {
+.edit-character__section4 {
     display: flex;
     flex-direction: column;
 }
 
-.create-character__section4 > label {
+.edit-character__section4 > label {
     padding-top: 10px;
 }
 
-.create-character__errors {
+.edit-character__errors {
     color: red;
     font-size: 14px;
     text-align: center;
     display: block;
 }
-
-
-/* className="create-character__label" */
