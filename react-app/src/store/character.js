@@ -3,6 +3,7 @@ const GET_USER_CHARACTERS = "character/GET_USER_CHARACTERS";
 const CLEAR_USER_CHARACTERS = "character/CLEAR_USER_CHARACTERS";
 const CREATE_USER_CHARACTER = "character/CREATE_USER_CHARACTER";
 const DELETE_USER_CHARACTER = "character/DELETE_USER_CHARACTER";
+const EDIT_USER_CHARACTER = "character/EDIT_USER_CHARACTER";
 
 // actions
 const actionGetUserCharacters = (characters) => ({
@@ -23,6 +24,11 @@ const actionDeleteUserCharacter = (characterID) => ({
   type: DELETE_USER_CHARACTER,
   payload: characterID,
 });
+
+const actionEditUserCharacter = (character) => ({
+    type: EDIT_USER_CHARACTER,
+    payload: character
+})
 
 // thunks
 
@@ -73,6 +79,22 @@ export const thunkDeleteUserCharacters = (characterID) => async (dispatch) => {
   }
 };
 
+export const thunkEditUserCharacters = (formData) => async (dispatch) => {
+    const response = await fetch(`/api/characters/edit/${formData.get("characterID")}`, {
+        method: "PATCH",
+        body: formData
+    });
+
+    if (response.ok) {
+        let updatedCharacter = await response.json()
+        dispatch(actionEditUserCharacter(updatedCharacter));
+        return response
+    } else {
+        const error = await response.json();
+        return error;
+    }
+}
+
 const initialState = { userCharacters: {} };
 
 export default function reducer(state = initialState, action) {
@@ -111,6 +133,15 @@ export default function reducer(state = initialState, action) {
       }
       console.log(newObj)
       return { ...state, userCharacters: newObj };
+
+    case EDIT_USER_CHARACTER:
+        return {
+            ...state,
+            userCharacters: {
+                ...state.userCharacters,
+                [action.payload.id]: action.payload
+            }
+        }
     default:
       return state;
   }

@@ -173,7 +173,7 @@ export default function ManageCharacterCreate() {
           <input
             required
             type="file"
-            accept=".png, .jpeg, .jpg, .webp"
+            accept=".png, .jpeg, .jpg"
             onChange={(e) => handleNewImage(e)}
           />
           {attempted && localErrors.sprite && (

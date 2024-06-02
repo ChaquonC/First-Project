@@ -1,8 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import db, User, Character, Stats, Move
-from ..forms import CreateCharacterForm
+from ..forms import CreateCharacterForm, EditCharacterForm
 from .aws_helpers import get_unique_filename, upload_file_to_s3
+
 
 character_routes = Blueprint('characters', __name__)
 
@@ -94,3 +95,50 @@ def delete_user_character(characterId):
     db.session.delete(character)
     db.session.commit()
     return {"ok": "we good"}
+
+@character_routes.route('/edit/<int:characterId>', methods = ["PATCH"])
+@login_required
+def edit_user_character(characterId):
+    form = EditCharacterForm()
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    form.data["user_id"] = current_user.id
+
+    if form.validate_on_submit():
+        character = Character.query.get(characterId)
+        move1 = Move.query.get(form.data["move1ID"])
+        move2 = Move.query.get(form.data["move2ID"])
+        stats = Stats.query.filter(Stats.character_id == characterId)
+
+        if form.data["name"] is not None:
+            character.name = form.data["name"]
+        if form.data["sprite"] is not None:
+            image = form.data["sprite"]
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            if "url" not in upload:
+                return {ERROR: "FAILD TO UPLOAD CHARACTER SPRITE TO AWS"}
+            character.sprite = upload["url"]
+        if form.data["hp"] is not None:
+            stats.hp = form.data["hp"]
+        if form.data["armor"] is not None:
+            stats.armorValue = form.data["armor"]
+        if form.data["damage"] is not None:
+            stats.baseDamage = form.data["damage"]
+        if form.data["weakness"] is not None:
+            stats.weakness = form.data["weakness"]
+        if form.data["resistance"] is not None:
+            stats.resistance = form.data["resistance"]
+        if form.data["firstMoveName"] is not None:
+            move1.name = form.data["firstMoveName"]
+        if form.data["firstMoveType"] is not None:
+            move1.moveType = form.data["firstMoveType"]
+        if form.data["secondMoveName"] is not None:
+            move2.name = form.data["secondMoveName"]
+        if form.data["secondMoveType"] is not None:
+            move2.MoveType = form.data["secondMoveType"]
+
+        db.session.commit()
+
+        return character.to_dict()
+    return {"errors": validation_errors_to_dict(form.errors)}, 400

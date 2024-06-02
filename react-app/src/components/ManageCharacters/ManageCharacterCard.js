@@ -1,6 +1,7 @@
 import "./ManageCharacterCard.css";
 import OpenModalButton from "../OpenModalButton";
 import ManageCharacterDelete from "./ManageCharacterDelete";
+import ManageCharacterEdit from "./ManageCharacterEdit";
 
 export default function ManageCharacterCard({ character }) {
   return (
@@ -11,7 +12,7 @@ export default function ManageCharacterCard({ character }) {
 
       <div className="mcc__buttons">
         <OpenModalButton
-          // modalComponent={}
+          modalComponent={<ManageCharacterEdit character={character}/>}
           buttonClass={"manageCharacterCard__delete"}
           buttonText={"EDIT"}
         />
