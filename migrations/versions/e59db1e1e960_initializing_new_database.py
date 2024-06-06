@@ -1,8 +1,8 @@
-"""empty message
+"""initializing new database
 
-Revision ID: 5d1091b5d858
+Revision ID: e59db1e1e960
 Revises: 
-Create Date: 2024-03-05 10:44:32.138461
+Create Date: 2024-06-06 14:41:46.246468
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '5d1091b5d858'
+revision = 'e59db1e1e960'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,7 +51,7 @@ def upgrade():
     op.create_table('moves',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('character_id', sa.String(), nullable=False),
-    sa.Column('move_type', sa.Enum('fire', 'ice', 'water', 'earth', 'wind', 'electric', 'slash', 'gun', 'bash', 'consume', name='moves'), nullable=False),
+    sa.Column('move_type', sa.Enum('fire', 'ice', 'water', 'earth', 'wind', 'electric', 'slash', 'gun', 'bash', 'consume', name='move_types'), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
