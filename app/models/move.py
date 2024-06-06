@@ -2,8 +2,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 from enum import Enum
 
-moves = Enum(
-    "moves",
+move_types = Enum(
+    "move_types",
     [
         "fire",
         "ice",
@@ -29,7 +29,7 @@ class Move(db.Model):
     character_id = db.Column(
         db.String, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False
     )
-    move_type = db.Column(db.Enum(moves), nullable=False)
+    move_type = db.Column(db.Enum(move_types), nullable=False)
     name = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
