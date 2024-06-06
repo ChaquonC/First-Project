@@ -27,7 +27,7 @@ class Move(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
     character_id = db.Column(
-        db.String, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False
+        db.Integer, db.ForeignKey(add_prefix_for_prod("characters.id")), nullable=False
     )
     move_type = db.Column(db.Enum(move_types), nullable=False)
     name = db.Column(db.String(100), nullable=False)
