@@ -8,11 +8,13 @@ ALLOWED_AUDIO_EXTENSIONS = { "mp3", "m4a", "wav", "flac", "ogg", "aac", "alac" }
 
 BUCKET_NAME = os.environ.get("S3_BUCKET")
 S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
+key = os.environ.get("S3_KEY")
+secret_key = os.environ.get("S3_SECRET")
 
 s3 = boto3.client(
    "s3",
-   aws_access_key_id=os.environ.get("S3_KEY"),
-   aws_secret_access_key=os.environ.get("S3_SECRET")
+   aws_access_key_id=key,
+   aws_secret_access_key=secret_key
 )
 
 
