@@ -28,7 +28,7 @@ export default function NavBar() {
       <Link to={"/about"} className="navbar__about">
         About
       </Link>
-      <Link to={"/characters"} className="navbar__characters">
+      <Link to={"/main/manage-characters"} className="navbar__characters">
         Characters
       </Link>
       <button onClick={handleDropdown} className="navbar__profile">
@@ -37,15 +37,7 @@ export default function NavBar() {
       {dropped && (
         <ul className="navbar__dropdown-menu">
           <li>
-            <Link
-              to={"/main/manage-characters"}
-              className="dropdown-menu__characters"
-            >
-              Manage Characters
-            </Link>
-          </li>
-          <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} id="navbar__logout__button">Logout</button>
           </li>
         </ul>
       )}

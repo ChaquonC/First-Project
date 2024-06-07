@@ -5,14 +5,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-grapefruit);
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
 }
 
 .login__container {
-    background-color: var(--primary-light-blue);
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
     display: flex;
     flex-direction: row;
     border-radius: 15px;
+    width: 30%;
 }
 
 .login__demo-users {
@@ -25,8 +26,19 @@
 }
 
 .login__demo1 {
-    width: 150px;
-    padding: 15px;
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+    font-size: larger;
+}
+
+.login__demo1:hover {
+    background-color: var(--primary-color3);
 }
 
 .login__form {
@@ -55,10 +67,16 @@
 }
 
 .login__submit {
-    width: 150px;
-    height: 25px;
-    font-size: medium;
-    border-radius: 30px;
-    border: none;
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
 
+.login__submit:hover {
+    background-color: var(--primary-color3);
 }

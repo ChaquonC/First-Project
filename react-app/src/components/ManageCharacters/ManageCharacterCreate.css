@@ -1,9 +1,15 @@
 .create-character__div {
     width: 600px;
-    background-color: gray;
-    border-radius: 10px;
-    margin: 10px;
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+    border-radius: 20px;
+    margin: -20px;
     padding: 20px;
+    font-weight: bolder;
+}
+
+.create-character__title {
+    display: flex;
+    justify-content:center;
 }
 
 .create-character__form {
@@ -71,5 +77,18 @@
     display: block;
 }
 
+.create-character__submit-button {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
 
-/* className="create-character__label" */
+.create-character__submit-button:hover {
+    background-color: var(--primary-color2);
+    color: whitesmoke;
+}

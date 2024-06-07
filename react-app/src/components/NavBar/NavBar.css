@@ -20,7 +20,7 @@
 }
 
 .navbar__about:hover {
-    color: var(--primary-color5);
+    color: var(--primary-color1);
 }
 
 .navbar__characters {
@@ -32,7 +32,7 @@
 }
 
 .navbar__characters:hover {
-    color: var(--primary-color5);
+    color: var(--primary-color1);
 }
 
 .navbar__profile {
@@ -45,10 +45,30 @@
 }
 
 .navbar__profile:hover {
-    color: var(--primary-color5);
+    color: var(--primary-color1);
 }
 
 .navbar__dropdown-menu {
     display: flex;
     flex-direction: column;
+    /* position: absolute;
+    right: 10%;
+    top: 10%; */
+}
+
+#navbar__logout__button {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+}
+
+#navbar__logout__button:hover {
+    background: linear-gradient(var(--primary-color1), var(--primary-color2));
+    color: var(--primary-color3)
 }

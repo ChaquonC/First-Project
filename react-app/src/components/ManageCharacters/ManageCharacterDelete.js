@@ -18,10 +18,10 @@ export default function ManageCharacterDelete({ character }) {
 
   return (
     <div className="ManageCharacterDelete__maindiv">
-      <h1>ARE YOU SURE YOU WANT TO DELETE {character.name}?</h1>
+      <h1 id="mcd__character_name">ARE YOU SURE YOU WANT TO DELETE {character.name}?</h1>
       <div className="ManageCharacterDelete__buttons">
-        <button onClick={closeModal}>NO</button>
-        <button onClick={deleteCharacter}>YES</button>
+        <button onClick={closeModal} id="mcd__no__button">NO</button>
+        <button onClick={deleteCharacter} id="mcd__yes__button">YES</button>
       </div>
     </div>
   );
