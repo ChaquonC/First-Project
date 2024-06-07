@@ -1,21 +1,25 @@
 .mcc__li {
-    border: 5px solid yellow;
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
     width: 250px;
     height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 20%;
 }
 
 .mcc__img {
     width: 50%;
     height: 50%;
     align-self: cent;
+    border-radius: 50%;
+    border: 2px white solid;
 }
 
 .mcc__name {
-    text-overflow: ellipsis;
+    width: 200px;
+    text-overflow:ellipsis;
     overflow: hidden;
     white-space: nowrap;
     color: white;
@@ -26,4 +30,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 5px;
+}
+
+.mcc__buttons > button:hover {
+    background-color: var(--primary-color2);
+}
+
+.mcc__buttons > button {
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
 }

@@ -1,9 +1,15 @@
 .edit-character__div {
     width: 600px;
-    background-color: gray;
-    border-radius: 10px;
-    margin: 10px;
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+    border-radius: 20px;
+    margin: -20px;
     padding: 20px;
+    font-weight: bolder;
+}
+
+.edit-character__title {
+    display: flex;
+    justify-content:center;
 }
 
 .edit-character__form {
@@ -69,4 +75,20 @@
     font-size: 14px;
     text-align: center;
     display: block;
+}
+
+.edit-character__submit-button {
+    display: flex;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
+
+.edit-character__submit-button:hover {
+    background-color: var(--primary-color2);
+    color: whitesmoke;
 }

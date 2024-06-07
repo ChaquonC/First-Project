@@ -13,17 +13,17 @@ export default function GameSelector() {
         <h2>Pick Game Mode</h2>
       </div>
       <div className="game-selector__options">
-        <div className="game-selector__game1 game-selector__card">
-          <button className="game1" onClick={handleGame1}>Player vs AI</button>
+        <div className="game1">
+          <button className="game-selector__button" onClick={handleGame1}>Player vs AI</button>
         </div>
-        <div className="game-selector__game2 game-selector__card">
-          <button className="game2" onClick={handleGame2}>Player vs Player</button>
+        <div className="game2">
+          <button className="game-selector__button" onClick={handleGame2}>Player vs Player</button>
         </div>
-        <div className="game-selector__game3 game-selector__card">
-          <button className="game3" onClick={handleGame3}>Online Battle</button>
+        <div className="game3">
+          <button className="game-selector__button" onClick={handleGame3}>Online Battle</button>
         </div>
-        <div className="game-selector__manage-characters game-selector__card">
-          <button className="manage-characters" onClick={handleManageCharacters}>Manage Characters</button>
+        <div className="game4">
+          <button className="game-selector__button" onClick={handleManageCharacters}>Manage Characters</button>
         </div>
       </div>
     </div>

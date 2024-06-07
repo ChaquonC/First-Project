@@ -1,0 +1,52 @@
+.ManageCharacterDelete__maindiv {
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    height: 200px;
+    align-items: center;
+    gap: 10%;
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+    border: none;
+    border-radius: 20px;
+    padding: 5px;
+    color: var(--primary-color1);
+    justify-content: center;
+    margin: -10px;
+}
+
+.ManageCharacterDelete__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+}
+
+.ManageCharacterDelete__buttons > button {
+    display: flex;
+    padding-left: 70px;
+    padding-right: 70px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
+
+#mcd__yes__button {
+    background-color: red;
+    color: var(--primary-color5);
+}
+
+#mcd__yes__button:hover {
+    background-color: brown;
+}
+
+#mcd__no__button:hover {
+    background-color: var(--primary-color2);
+}
+
+#mcd__character_name {
+    width: 100%;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

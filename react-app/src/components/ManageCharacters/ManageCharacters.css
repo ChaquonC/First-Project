@@ -12,6 +12,14 @@
 .manage-character__plus-button {
     width: 250px;
     height: 250px;
-
+    border-radius: 20%;
     font-size: 200px;
+    border: none;
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+    color: white;
+}
+
+.manage-character__plus-button:hover {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color1));
+    color: var(--primary-color1);
 }
