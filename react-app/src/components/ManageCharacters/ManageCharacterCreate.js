@@ -64,8 +64,8 @@ export default function ManageCharacterCreate() {
     let temp = {};
 
     //Character
-    if (name.length < 5) {
-      temp.name = "Please Make Name Atleast 5 characters";
+    if (name.length < 1) {
+      temp.name = "Please Make Name Atleast 1 characters";
     }
     if (name.length >= 100) {
       temp.name = "Maximum Name size Reached";
@@ -80,8 +80,8 @@ export default function ManageCharacterCreate() {
     }
 
     //Move 1 Field
-    if (move1Name.length < 5) {
-      temp.move1Name = "Please make name atleast 5 characters";
+    if (move1Name.length < 1) {
+      temp.move1Name = "Please input at least one character";
     }
     if (move1Type === null) {
       temp.move1Type = "Please Select FIrst Move Type";
@@ -94,8 +94,8 @@ export default function ManageCharacterCreate() {
     if (move2Type === null) {
       temp.move2Type = "Please Select Second Move Type";
     }
-    if (move2Name.length < 5) {
-      temp.move2Name = "Please make name atleast 5 characters";
+    if (move2Name.length < 1) {
+      temp.move2Name = "Please input at least one character";
     }
     if (move2Name.length >= 100) {
       temp.move2Name = "Maximum name size reached";

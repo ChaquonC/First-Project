@@ -1,0 +1,7 @@
+.character-select__character-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin: 20px 20px 20px 20px;
+}

@@ -66,8 +66,8 @@ export default function ManageCharacterEdit({ character }) {
   useEffect(() => {
     let temp = {};
 
-    if (name.length < 5) {
-      temp.name = "Please Make Name Atleast 5 characters";
+    if (name.length < 1) {
+      temp.name = "Please input at least one character";
     }
     if (name.length >= 100) {
       temp.name = "Maximum Name size Reached";
@@ -78,8 +78,8 @@ export default function ManageCharacterEdit({ character }) {
     if (weakness === null) {
       temp.weakness = "Please Select a Weakness";
     }
-    if (move1Name.length < 5) {
-      temp.move1Name = "Please make name atleast 5 characters";
+    if (move1Name.length < 1) {
+      temp.move1Name = "Please input at least one character";
     }
     if (move1Type === null) {
       temp.move1Type = "Please Select FIrst Move Type";
@@ -90,11 +90,15 @@ export default function ManageCharacterEdit({ character }) {
     if (move2Type === null) {
       temp.move2Type = "Please Select Second Move Type";
     }
-    if (move2Name.length < 5) {
-      temp.move2Name = "Please make name atleast 5 characters";
+    if (move2Name.length < 1) {
+      temp.move2Name = "Please input at least one character";
     }
     if (move2Name.length >= 100) {
       temp.move2Name = "Maximum name size reached";
+    }
+    if (weakness === resistance) {
+      temp.weakness = "Weakness and Resistance cannot be the same"
+      temp.resistance = "Weakness and Resistance cannot be the same"
     }
 
     console.log("TEMPPPPP", temp);
@@ -120,6 +124,7 @@ export default function ManageCharacterEdit({ character }) {
 
       formData.append("move1ID", character.move1.id)
       formData.append("move2ID", character.move2.id)
+      formData.append("statsID", character.stats.id)
       formData.append("characterID", character.id)
 
       if (name !== character.name) {
