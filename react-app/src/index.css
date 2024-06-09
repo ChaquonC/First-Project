@@ -1,6 +1,6 @@
 /* TODO Add site wide styles */
 #root {
-    height: 100vh;
+  /* height: 100vh; */
     background-image: linear-gradient(var(--primary-color1), var(--primary-color2));
 }
 
