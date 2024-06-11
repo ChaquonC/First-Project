@@ -1,7 +1,30 @@
+.character-select__div {
+    height: 100vh;
+}
+
+.character-select__characters {
+    height: 45%;
+}
 .character-select__character-list {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 50px;
+    justify-content: center;
+    gap: 30px;
     margin: 20px 20px 20px 20px;
+    height: 100%;
+    overflow-y: scroll;
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+    border-radius: 20px;
+}
+.character-select__selected-characters {
+    border: 2px purple solid;
+    height: 70%;
+}
+.selected-character__player1 {
+    border: 2px white solid
+}
+
+.selected-character__player2 {
+    border: 2px pink solid
 }

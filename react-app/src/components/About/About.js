@@ -90,14 +90,14 @@ export default function About() {
           <div className="about__github-main">
             <h3 className="about__info-section">
               Ruben:
-              <a href="https://github.com/RubenRamirez12" target="_blank">
+              <a href="https://github.com/RubenRamirez12" target="_blank" rel="noreferrer">
                 <i className="fab fa-github" />
               </a>
             </h3>
 
             <h3 className="about__info-section">
               Chaquon:
-              <a href="https://github.com/ChaquonC" target="_blank">
+              <a href="https://github.com/ChaquonC" target="_blank" rel="noreferrer">
                 <i className="fab fa-github" />
               </a>
             </h3>

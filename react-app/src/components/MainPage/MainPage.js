@@ -8,11 +8,8 @@ import NavBar from "../NavBar/NavBar";
 import { useSelector } from "react-redux";
 import GameSelector from "../GameSelector/GameSelector";
 import ManageCharacters from "../ManageCharacters";
-<<<<<<< HEAD
 import CharacterSelect from "../GameModes/PlayerVsAi/CharacterSelect";
-=======
 import About from "../About"
->>>>>>> about
 
 export default function MainPage() {
   const user = useSelector((state) => state.session.user);
