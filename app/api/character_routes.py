@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, User, Character, Stats, Move
 from ..forms import CreateCharacterForm, EditCharacterForm
 from .aws_helpers import get_unique_filename, upload_file_to_s3
+from sqlalchemy import or_
 
 
 character_routes = Blueprint('characters', __name__)
@@ -108,7 +109,8 @@ def edit_user_character(characterId):
         character = Character.query.get(characterId)
         move1 = Move.query.get(form.data["move1ID"])
         move2 = Move.query.get(form.data["move2ID"])
-        stats = Stats.query.filter(Stats.character_id == characterId)
+        stats = Stats.query.get(form.data["statsID"])
+        # stats = Stats.query.filter(Stats.character_id == characterId)
 
         if form.data["name"] is not None:
             character.name = form.data["name"]
@@ -122,9 +124,9 @@ def edit_user_character(characterId):
         if form.data["hp"] is not None:
             stats.hp = form.data["hp"]
         if form.data["armor"] is not None:
-            stats.armorValue = form.data["armor"]
+            stats.armor_value = form.data["armor"]
         if form.data["damage"] is not None:
-            stats.baseDamage = form.data["damage"]
+            stats.base_damage = form.data["damage"]
         if form.data["weakness"] is not None:
             stats.weakness = form.data["weakness"]
         if form.data["resistance"] is not None:
@@ -132,13 +134,21 @@ def edit_user_character(characterId):
         if form.data["firstMoveName"] is not None:
             move1.name = form.data["firstMoveName"]
         if form.data["firstMoveType"] is not None:
-            move1.moveType = form.data["firstMoveType"]
+            move1.move_type = form.data["firstMoveType"]
         if form.data["secondMoveName"] is not None:
             move2.name = form.data["secondMoveName"]
         if form.data["secondMoveType"] is not None:
-            move2.MoveType = form.data["secondMoveType"]
+            move2.move_type = form.data["secondMoveType"]
 
         db.session.commit()
 
         return character.to_dict()
     return {"errors": validation_errors_to_dict(form.errors)}, 400
+
+@character_routes.route('/battle')
+@login_required
+def get_battle_characters():
+    character_query = Character.query.filter(or_(Character.owner_id == current_user.id, Character.public == True)).all()
+    battle_characters = [character.to_dict() for character in character_query]
+
+    return {"battleCharacters": battle_characters}

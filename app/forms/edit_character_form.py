@@ -34,5 +34,6 @@ class EditCharacterForm(FlaskForm):
     secondMoveType = StringField('secondMoveType', validators=[])
     move1ID = IntegerField('move1ID', validators=[])
     move2ID = IntegerField('move2ID', validators=[])
+    statsID = IntegerField('statsID', validators=[])
 
     submit = SubmitField('Submit')

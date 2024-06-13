@@ -1,0 +1,54 @@
+.character-select__characters {
+    height: 45%;
+}
+.character-select__character-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 20px 20px 20px;
+    height: 100%;
+    overflow-y: scroll;
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+    border-radius: 20px;
+}
+.character-select__selected-characters {
+    height: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-character__versus {
+    width: 10%;
+    height: 30%;
+}
+
+.character-select__play-button-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2%;
+}
+
+.character-select__play-button {
+    display: flex;
+    width: 10%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3), var(--primary-color2));
+}
+
+.character-select__play-button:hover {
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color3), var(--primary-color2));
+}
+
+.character-select__play-button:active {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3), var(--primary-color3));
+
+}

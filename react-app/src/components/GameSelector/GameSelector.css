@@ -47,3 +47,7 @@
     background-image: linear-gradient(var(--primary-color2), var(--primary-color1));
     color: var(--primary-color1);
 }
+
+.game-selector__button:active {
+    background-image: linear-gradient(var(--primary-color1), var(--primary-color2));
+}

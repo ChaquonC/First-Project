@@ -23,3 +23,7 @@
     background-image: linear-gradient(var(--primary-color2), var(--primary-color1));
     color: var(--primary-color1);
 }
+
+.manage-characters__div {
+    height: 100vh
+}

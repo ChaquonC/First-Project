@@ -1,0 +1,46 @@
+.csc__li {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    color: white;
+    gap: 5px;
+}
+
+.csc__img {
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+    width: 60%;
+    height: 60%;
+    align-self: cent;
+    border-radius: 50%;
+}
+
+.csc__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5px;
+}
+
+.csc__buttons > button {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
+
+.csc__buttons > button:hover {
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+}
+
+.csc__buttons > button:active {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+}

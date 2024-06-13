@@ -37,6 +37,10 @@
     background-color: var(--primary-color2);
 }
 
+.mcc__buttons > button:active {
+    background-color: var(--primary-color1);
+}
+
 .mcc__buttons > button {
     display: flex;
     padding-left: 20px;

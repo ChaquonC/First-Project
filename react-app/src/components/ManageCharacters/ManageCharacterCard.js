@@ -13,7 +13,7 @@ export default function ManageCharacterCard({ character }) {
       <div className="mcc__buttons">
         <OpenModalButton
           modalComponent={<ManageCharacterEdit character={character}/>}
-          buttonClass={"manageCharacterCard__delete"}
+          buttonClass={"manageCharacterCard__edit"}
           buttonText={"EDIT"}
         />
 

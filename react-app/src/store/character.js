@@ -4,6 +4,7 @@ const CLEAR_USER_CHARACTERS = "character/CLEAR_USER_CHARACTERS";
 const CREATE_USER_CHARACTER = "character/CREATE_USER_CHARACTER";
 const DELETE_USER_CHARACTER = "character/DELETE_USER_CHARACTER";
 const EDIT_USER_CHARACTER = "character/EDIT_USER_CHARACTER";
+const GET_BATTLE_CHARACTERS = "character/GET_BATTLE_CHARACTERS";
 
 // actions
 const actionGetUserCharacters = (characters) => ({
@@ -26,9 +27,14 @@ const actionDeleteUserCharacter = (characterID) => ({
 });
 
 const actionEditUserCharacter = (character) => ({
-    type: EDIT_USER_CHARACTER,
-    payload: character
-})
+  type: EDIT_USER_CHARACTER,
+  payload: character,
+});
+
+const actionGetBattleCharacters = (characters) => ({
+  type: GET_BATTLE_CHARACTERS,
+  payload: characters,
+});
 
 // thunks
 
@@ -72,7 +78,7 @@ export const thunkDeleteUserCharacters = (characterID) => async (dispatch) => {
 
   if (response.ok) {
     dispatch(actionDeleteUserCharacter(characterID));
-    return response
+    return response;
   } else {
     const error = await response.json();
     return error;
@@ -80,22 +86,40 @@ export const thunkDeleteUserCharacters = (characterID) => async (dispatch) => {
 };
 
 export const thunkEditUserCharacters = (formData) => async (dispatch) => {
-    const response = await fetch(`/api/characters/edit/${formData.get("characterID")}`, {
-        method: "PATCH",
-        body: formData
-    });
-
-    if (response.ok) {
-        let updatedCharacter = await response.json()
-        dispatch(actionEditUserCharacter(updatedCharacter));
-        return response
-    } else {
-        const error = await response.json();
-        return error;
+  const response = await fetch(
+    `/api/characters/edit/${formData.get("characterID")}`,
+    {
+      method: "PATCH",
+      body: formData,
     }
-}
+  );
 
-const initialState = { userCharacters: {} };
+  if (response.ok) {
+    let updatedCharacter = await response.json();
+    dispatch(actionEditUserCharacter(updatedCharacter));
+    return response;
+  } else {
+    const error = await response.json();
+    return error;
+  }
+};
+
+export const thunkGetBattleCharacters = () => async (dispatch) => {
+  const response = await fetch("/api/characters/battle");
+
+  if (response.ok) {
+    const data = await response.json();
+
+    let normalized = {};
+
+    for (let character of data.battleCharacters) {
+      normalized[character.id] = character;
+    }
+    dispatch(actionGetBattleCharacters(normalized));
+  }
+};
+
+const initialState = { userCharacters: {}, battleCharacters: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -121,27 +145,35 @@ export default function reducer(state = initialState, action) {
       };
 
     case DELETE_USER_CHARACTER:
-        console.log(state)
-        console.log("payload", action.payload)
+      console.log(state);
+      console.log("payload", action.payload);
       let newObj = {};
       let oldObj = state.userCharacters;
       for (let characterID in oldObj) {
-          if (oldObj[characterID].id !== action.payload) {
-            console.log(characterID)
+        if (oldObj[characterID].id !== action.payload) {
+          console.log(characterID);
           newObj[characterID] = oldObj[characterID];
         }
       }
-      console.log(newObj)
+      console.log(newObj);
       return { ...state, userCharacters: newObj };
 
     case EDIT_USER_CHARACTER:
-        return {
-            ...state,
-            userCharacters: {
-                ...state.userCharacters,
-                [action.payload.id]: action.payload
-            }
-        }
+      return {
+        ...state,
+        userCharacters: {
+          ...state.userCharacters,
+          [action.payload.id]: action.payload,
+        },
+      };
+
+    case GET_BATTLE_CHARACTERS:
+      return {
+        ...state,
+        battleCharacters: {
+          ...action.payload,
+        },
+      };
     default:
       return state;
   }

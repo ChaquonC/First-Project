@@ -2,12 +2,15 @@ import "./MainPage.css";
 import {
   Redirect,
   Route,
-  Switch
+  Switch,
 } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "../NavBar/NavBar";
 import { useSelector } from "react-redux";
 import GameSelector from "../GameSelector/GameSelector";
 import ManageCharacters from "../ManageCharacters";
+import CharacterSelect from "../GameModes/PlayerVsAi/CharacterSelect";
+import PlayerCharacterSelect from "../GameModes/PlayerVPlayer/PlayerCharacterSelect";
+import About from "../About"
 
 export default function MainPage() {
   const user = useSelector((state) => state.session.user);
@@ -20,9 +23,16 @@ export default function MainPage() {
             <GameSelector />
           </Route>
           <Route path="/characters"></Route>
-          <Route path="/main/gamemode1"></Route>
-          <Route path="/main/gamemode2"></Route>
+          <Route path="/main/gamemode1">
+            <CharacterSelect />
+          </Route>
+          <Route path="/main/gamemode2">
+            <PlayerCharacterSelect />
+          </Route>
           <Route path="/main/gamemode3"></Route>
+          <Route path="/main/about">
+            <About />
+          </Route>
           <Route path="/main/manage-characters">
             <ManageCharacters />
           </Route>

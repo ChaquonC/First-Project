@@ -1,0 +1,86 @@
+.about__div {
+  height: 100%;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.about__tech-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 0px 30% 0px 30%;
+}
+
+#about__tech-title {
+  color: white;
+  text-align: center;
+  font-size: 150px;
+}
+
+.about__li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.about__li-img {
+  width: 150px;
+  height: 150px;
+}
+
+.about__us {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__github {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: white;
+  font-size: 40px;
+}
+
+.about__github-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__info-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.fa-github {
+    color: black;
+}
+
+.about__info-section > a {
+    gap: 10px;
+}
+
+.about__git-image {
+  width: 30%;
+  height: 30%;
+}

@@ -3,7 +3,7 @@ import "./NavBar.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
-import fake_mon_home_icon from "../../images/fake_mon_home_icon.png"
+import fake_mon_home_icon from "../../images/fake_mon_home_icon.png";
 import { actionClearUserCharacters } from "../../store/character";
 
 export default function NavBar() {
@@ -11,8 +11,7 @@ export default function NavBar() {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const handleLogout = async () => {
-
-    await dispatch(actionClearUserCharacters())
+    await dispatch(actionClearUserCharacters());
     await dispatch(logout());
   };
 
@@ -23,9 +22,13 @@ export default function NavBar() {
   return (
     <div className="navbar__div">
       <Link to={"/main"} className="navbar__home">
-        <img className="navbar__home-image" src={fake_mon_home_icon} alt="home icon" />
+        <img
+          className="navbar__home-image"
+          src={fake_mon_home_icon}
+          alt="home icon"
+        />
       </Link>
-      <Link to={"/about"} className="navbar__about">
+      <Link to={"/main/about"} className="navbar__about">
         About
       </Link>
       <Link to={"/main/manage-characters"} className="navbar__characters">
@@ -37,7 +40,9 @@ export default function NavBar() {
       {dropped && (
         <ul className="navbar__dropdown-menu">
           <li>
-            <button onClick={handleLogout} id="navbar__logout__button">Logout</button>
+            <button onClick={handleLogout} id="navbar__logout__button">
+              Logout
+            </button>
           </li>
         </ul>
       )}
