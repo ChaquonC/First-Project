@@ -1,9 +1,9 @@
-import "./CharacterSelect.css";
+import "./PlayerCharacterSelect.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetBattleCharacters } from "../../../store/character";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import CharacterSelectCard from "./CharacterSelectCard";
+import PlayerCharacterSelectCard from "../PlayerVPlayer/PlayerCharacterSelectCard"
 import CharacterInfoCard from "../InfoCard/CharacterInfoCard";
 
 export default function CharacterSelect() {
@@ -13,7 +13,7 @@ export default function CharacterSelect() {
     Object.values(state.character.battleCharacters)
   );
   const [playerCharacter, setPlayerCharacter] = useState(null);
-  const [aiCharacter, setAiCharacter] = useState(null);
+  const [playerCharacter2, setPlayerCharacter2] = useState(null);
 
   useEffect(() => {
     dispatch(thunkGetBattleCharacters());
@@ -27,10 +27,10 @@ export default function CharacterSelect() {
         <ul className="character-select__character-list">
           {characters.map((character) => {
             return (
-              <CharacterSelectCard
+              <PlayerCharacterSelectCard
                 character={character}
                 setPlayerCharacter={setPlayerCharacter}
-                setAiCharacter={setAiCharacter}
+                setPlayerCharacter2={setPlayerCharacter2}
               />
             );
           })}
@@ -46,7 +46,7 @@ export default function CharacterSelect() {
           src="https://fake-mon.s3.us-east-2.amazonaws.com/versus+symbol.png"
         ></img>
         <div className="selected-characters__player2">
-          <CharacterInfoCard character={aiCharacter} />
+          <CharacterInfoCard character={playerCharacter2} />
         </div>
       </div>
       <div className="character-select__play-button-container">

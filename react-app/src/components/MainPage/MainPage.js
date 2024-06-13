@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import GameSelector from "../GameSelector/GameSelector";
 import ManageCharacters from "../ManageCharacters";
 import CharacterSelect from "../GameModes/PlayerVsAi/CharacterSelect";
+import PlayerCharacterSelect from "../GameModes/PlayerVPlayer/PlayerCharacterSelect";
 import About from "../About"
 
 export default function MainPage() {
@@ -25,7 +26,9 @@ export default function MainPage() {
           <Route path="/main/gamemode1">
             <CharacterSelect />
           </Route>
-          <Route path="/main/gamemode2"></Route>
+          <Route path="/main/gamemode2">
+            <PlayerCharacterSelect />
+          </Route>
           <Route path="/main/gamemode3"></Route>
           <Route path="/main/about">
             <About />

@@ -36,12 +36,20 @@
     color: var(--primary-color5);
 }
 
+#mcd__yes_button {
+    background-color: darkred;
+}
+
 #mcd__yes__button:hover {
     background-color: brown;
 }
 
 #mcd__no__button:hover {
     background-color: var(--primary-color2);
+}
+
+#mcd__no__button:active {
+    background-color: var(--primary-color1);
 }
 
 #mcd__character_name {
