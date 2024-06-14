@@ -18,7 +18,7 @@ def seed_characters():
         name="Grinch",
         sprite="https://fake-mon.s3.us-east-2.amazonaws.com/SEEDER/thigGrinch.jpeg",
         owner_id=2,
-        public=False
+        public=True
     )
     character4 = Character(
         name="Hollow Knight",

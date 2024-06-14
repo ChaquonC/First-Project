@@ -9,6 +9,7 @@ export default function ManageCharacterCreate() {
 
   const dispatch = useDispatch();
 
+
   const [characterSprite, setCharacterSprite] = useState(null);
   const [characterSpriteUrl, setCharacterSpriteUrl] = useState("");
   const [name, setName] = useState("");
@@ -29,6 +30,7 @@ export default function ManageCharacterCreate() {
   const [localErrors, setLocalErrors] = useState({});
   const [apiErrors, setApiErrors] = useState({});
   const [attempted, setAttempted] = useState(false);
+  const [pending, setPending] = useState(false);
 
   useEffect(() => {
     if (hp === 200) {
@@ -134,10 +136,12 @@ export default function ManageCharacterCreate() {
       formData.append("secondMoveName", move2Name);
       formData.append("secondMoveType", move2Type);
 
+      setPending(true);
       let res = await dispatch(thunkCreateUserCharacters(formData));
 
       if (res && res.errors) {
         let temp = {};
+        setPending(false);
         for (let error in res.errors) {
           temp[error] = res.errors[error];
         }
@@ -145,6 +149,7 @@ export default function ManageCharacterCreate() {
         setApiErrors(temp);
         console.log(apiErrors);
       } else {
+        setPending(false);
         closeModal();
       }
     }
@@ -466,6 +471,7 @@ export default function ManageCharacterCreate() {
           <button
             className="create-character__submit-button"
             type="submit"
+            disabled={pending}
             onClick={() => setAttempted(true)}>
             Submit
           </button>

@@ -11,6 +11,7 @@ import ManageCharacters from "../ManageCharacters";
 import CharacterSelect from "../GameModes/PlayerVsAi/CharacterSelect";
 import PlayerCharacterSelect from "../GameModes/PlayerVPlayer/PlayerCharacterSelect";
 import About from "../About"
+import PVABattle from "../GameModes/PlayerVsAi/PVABattle";
 
 export default function MainPage() {
   const user = useSelector((state) => state.session.user);
@@ -22,11 +23,13 @@ export default function MainPage() {
           <Route exact path="/main">
             <GameSelector />
           </Route>
-          <Route path="/characters"></Route>
-          <Route path="/main/gamemode1">
+          <Route path="/main/gamemode1/select">
             <CharacterSelect />
           </Route>
-          <Route path="/main/gamemode2">
+          <Route path="/main/gamemode1/battle">
+            <PVABattle />
+          </Route>
+          <Route path="/main/gamemode2/select">
             <PlayerCharacterSelect />
           </Route>
           <Route path="/main/gamemode3"></Route>
