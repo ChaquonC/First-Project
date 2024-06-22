@@ -4,6 +4,7 @@ import "./CharacterSelect.css";
 import { useEffect, useState } from "react";
 import { damageTaken, heal, turnDelay } from "../../../Utlities";
 import VictoryCard from "../InfoCard/VictoryCard";
+import StandAloneModal from "../../StandAloneModal";
 export default function PVABattle() {
   const characters = useSelector((state) => state.character.battling);
 
@@ -21,6 +22,9 @@ export default function PVABattle() {
   const [aiHealthbarColor, setAIHealthbarColor] = useState("blue");
   const [aiHealsleft, setAIHealsLeft] = useState(2);
   const [aiTotalHp, setAiTotalHp] = useState();
+
+  const [gameIsOver, setGameIsOver] = useState(false);
+  const [winner, setWinner] = useState();
 
   useEffect(() => {
     setPlayer(characters.player1);
@@ -53,12 +57,24 @@ export default function PVABattle() {
     setPlayerHealthPercentage(playerCurrentHealth / playerTotalHp);
     setAIHealthPercentage(aiCurrentHealth / aiTotalHp);
     if (aiCurrentHealth <= 0) {
-        <VictoryCard character={player}/>
+        console.log("ai loses")
+      setWinner(player);
+      setGameIsOver(true);
+    } else if (playerCurrentHealth <= 0) {
+        console.log("player loses")
+      setWinner(ai);
+      setGameIsOver(true);
     }
-    if (playerCurrentHealth <= 0) {
-        <VictoryCard character={ai}/>
-    }
-  }, [playerCurrentHealth, playerTotalHp, aiCurrentHealth, aiTotalHp, ai, player]);
+  }, [
+    playerCurrentHealth,
+    playerTotalHp,
+    aiCurrentHealth,
+    aiTotalHp,
+    ai,
+    player,
+    winner,
+    gameIsOver
+  ]);
 
   const aiBehavior = async () => {
     if (aiHealthPercentage < 0.5 && aiHealsleft > 0) {
@@ -128,7 +144,7 @@ export default function PVABattle() {
                 backgroundColor: `${playerHealthbarColor}`,
               }}
             >
-              HEALTH
+              HEALTH: {playerCurrentHealth}
             </div>
           </div>
         </div>
@@ -173,8 +189,14 @@ export default function PVABattle() {
           </button>
         </div>
       </div>
+      {/* {gameIsOver && player.stats.hp <= 0 ? <></> : <></>} */}
+      <StandAloneModal
+        openOnLoad={gameIsOver}
+        modalComponent={<VictoryCard character={winner} />}
+      />
+
       <div className="player2-battlecard__div">
-        <div className="player2-battlecard__sprite=healthbar">
+        <div className="player2-battlecard__sprite-healthbar">
           <img className="player2-battlecard__sprite" src={ai.sprite} alt="" />
           <div className="player2-battlecard__healthbar-full">
             <div
@@ -185,7 +207,7 @@ export default function PVABattle() {
                 backgroundColor: `${aiHealthbarColor}`,
               }}
             >
-              HEALTH
+              HEALTH: {aiCurrentHealth}
             </div>
           </div>
         </div>

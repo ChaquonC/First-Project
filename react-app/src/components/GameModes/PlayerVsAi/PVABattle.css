@@ -1,4 +1,58 @@
+.player1-battlecard__sprite-healthbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.player1-battlecard__healthbar-full {
+    width: 80%;
+}
 .player1-battlecard__sprite {
-    height: 100px;
-    width: 100px;
+    height: 20%;
+    width: 20%;
+}
+
+.player1-battlecard__div {
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color4));
+}
+
+.player1-battlecard__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player1-battlecard__buttons > button {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    font-weight: bolder;
+    border: 2px black solid;
+}
+
+.player1-battlecard__buttons > button:hover {
+    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+}
+
+.player1-battlecard__buttons > button:active {
+    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+}
+
+.player2-battlecard__sprite {
+    height: 20%;
+    width: 20%;
+}
+
+.player2-battlecard__sprite-healthbar {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.player2-battlecard__healthbar-full {
+    width: 70%;
 }
