@@ -103,6 +103,11 @@ export default function ManageCharacterCreate() {
       temp.move2Name = "Maximum name size reached";
     }
 
+    if (weakness === resistance) {
+      temp.weakness = "Weakness and Resistance cannot be the same"
+      temp.resistance = "Weakness and Resistance cannot be the same"
+    }
+
     console.log("TEMPPPPP", temp);
     setLocalErrors(temp);
   }, [

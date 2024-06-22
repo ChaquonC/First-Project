@@ -17,3 +17,7 @@ export const damageTaken = (move, attacker, defender) => {
 export const heal = (character) => {
     return character.stats.hp * 0.33;
 }
+
+export const turnDelay = () => {
+    return new Promise((resolve) => setTimeout(resolve, 500))
+}
