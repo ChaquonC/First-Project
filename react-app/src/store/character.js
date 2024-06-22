@@ -5,6 +5,7 @@ const CREATE_USER_CHARACTER = "character/CREATE_USER_CHARACTER";
 const DELETE_USER_CHARACTER = "character/DELETE_USER_CHARACTER";
 const EDIT_USER_CHARACTER = "character/EDIT_USER_CHARACTER";
 const GET_BATTLE_CHARACTERS = "character/GET_BATTLE_CHARACTERS";
+const BATTLING = "character/BATTLING";
 
 // actions
 const actionGetUserCharacters = (characters) => ({
@@ -34,6 +35,11 @@ const actionEditUserCharacter = (character) => ({
 const actionGetBattleCharacters = (characters) => ({
   type: GET_BATTLE_CHARACTERS,
   payload: characters,
+});
+
+export const actionBattling = (characters) => ({
+  type: BATTLING,
+  payload: characters
 });
 
 // thunks
@@ -119,7 +125,7 @@ export const thunkGetBattleCharacters = () => async (dispatch) => {
   }
 };
 
-const initialState = { userCharacters: {}, battleCharacters: {} };
+const initialState = { userCharacters: {}, battleCharacters: {}, battling: {} };
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
@@ -174,6 +180,13 @@ export default function reducer(state = initialState, action) {
           ...action.payload,
         },
       };
+    case BATTLING:
+      return {
+        ...state,
+        battling: action.payload
+
+
+      }
     default:
       return state;
   }

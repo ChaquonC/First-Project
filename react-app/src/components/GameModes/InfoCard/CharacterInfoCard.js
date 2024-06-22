@@ -1,6 +1,5 @@
 import "./CharacterInfoCard.css"
 export default function CharacterInfoCard({ character }) {
-  console.log(character);
   const name = character ? character.name : "Please select a character";
   const sprite = character ? character.sprite : "https://fake-mon.s3.us-east-2.amazonaws.com/question+mark.png";
   const hp = character ? character.stats.hp : "?";
