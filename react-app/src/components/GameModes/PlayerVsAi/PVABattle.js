@@ -1,6 +1,5 @@
 import "./PVABattle.css";
 import { useSelector } from "react-redux";
-import "./CharacterSelect.css";
 import { useEffect, useState } from "react";
 import { damageTaken, heal, turnDelay } from "../../../Utlities";
 import VictoryCard from "../InfoCard/VictoryCard";

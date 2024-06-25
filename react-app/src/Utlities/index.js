@@ -21,3 +21,9 @@ export const heal = (character) => {
 export const turnDelay = () => {
     return new Promise((resolve) => setTimeout(resolve, 500))
 }
+
+export function getRandomIntInclusive(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+  }
