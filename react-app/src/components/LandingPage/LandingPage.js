@@ -17,7 +17,7 @@ export default function LandingPage() {
                 </div>
             </div>
             <div className="landing-page__images">
-                <img src={kirby} alt="kirby"/>
+                <img className="landing-page__kirby-img" src={kirby} alt="kirby"/>
             </div>
             <div className="landing-page__account-buttons">
                     <button className="landing-page__signup" onClick={handleSignup}>Sign Up</button>

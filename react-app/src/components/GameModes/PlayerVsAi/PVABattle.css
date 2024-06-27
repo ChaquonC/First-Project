@@ -1,58 +1,154 @@
-.player1-battlecard__sprite-healthbar {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+.PVA__div {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 100px;
+  gap: 100px;
+
+  background-image: url('../../../images/battleBackground.jpg');
+  background-attachment: fixed;
+  background-size: cover;
 }
-.player1-battlecard__healthbar-full {
+
+.PVA__enemy-div,
+.PVA__player-div {
     width: 80%;
-}
-.player1-battlecard__sprite {
-    height: 20%;
-    width: 20%;
-}
-
-.player1-battlecard__div {
     display: flex;
-    flex-direction: column;
-    background-image: linear-gradient(var(--primary-color2), var(--primary-color4));
-}
-
-.player1-battlecard__buttons {
-    display: flex;
-    flex-direction: column;
+    gap: 50px;
     align-items: center;
 }
 
-.player1-battlecard__buttons > button {
-    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
-    display: flex;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+.PVA__enemy-hp-div,
+.PVA__player-hp-div {
+    background-color: darkgrey;
+    padding: 10px;
+    background-size: auto;
+    margin: 0;
+    height: min-content;
+}
+
+
+.PVA__character-name {
+  font-size: 20px;
+  color: white;
+}
+
+.PVA__health-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 200px;
+
+}
+
+/* Enemy CSS */
+.PVA__enemy-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.PVA__enemy-hp-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PVA__enemy-hp-parent {
+  width: 150px;
+  height: 5px;
+  background-color: grey;
+}
+
+.PVA__enemy-sprite {
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+}
+
+/* Player CSS */
+
+.PVA__player-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.PVA__player-hp-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PVA__player-hp-parent {
+  width: 150px;
+  height: 5px;
+  background-color: grey;
+}
+
+.PVA__player-sprite {
+  border-radius: 100%;
+  height: 150px;
+  width: 150px;
+}
+
+.PVA__player-hp-display {
+  color: white;
+  font-weight: bold;
+}
+
+.PVA__player-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-image: linear-gradient(#428bca, #337ab7);
+  border-radius: 10px;
+  margin-bottom: 53px;
+}
+
+.PVA__player-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.PVA__what-will {
+    font-size: 30px;
+    color: white;
+}
+
+.PVA__player-move1,
+.PVA__player-move2,
+.PVA__player-heal {
+    border: white 2px solid;
+    color: white;
+    padding: 12px 19px;
     border-radius: 15px;
     font-weight: bolder;
-    border: 2px black solid;
+    font-size: 15px;
 }
 
-.player1-battlecard__buttons > button:hover {
-    background-image: linear-gradient(var(--primary-color3), var(--primary-color2));
+.PVA__player-move1 {
+    background-color: red;
 }
 
-.player1-battlecard__buttons > button:active {
-    background-image: linear-gradient(var(--primary-color2), var(--primary-color3));
+.PVA__player-move2 {
+    background-color: blue;
 }
 
-.player2-battlecard__sprite {
-    height: 20%;
-    width: 20%;
+.PVA__player-heal {
+    background-color: green;
 }
 
-.player2-battlecard__sprite-healthbar {
-    display: flex;
-    flex-direction: row-reverse;
-}
 
-.player2-battlecard__healthbar-full {
-    width: 70%;
+
+.PVA__player-move1:hover,
+.PVA__player-move2:hover,
+.PVA__player-heal:hover {
+    background-color: lightblue;
 }

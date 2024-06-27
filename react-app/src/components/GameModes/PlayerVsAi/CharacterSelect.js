@@ -45,12 +45,14 @@ export default function CharacterSelect() {
   if (!user) return <Redirect to="/LandingPage" />;
 
   return (
+
     <div className="character-select__div">
       <div className="character-select__characters">
         <ul className="character-select__character-list">
           {characters.map((character) => {
             return (
               <CharacterSelectCard
+                key={character.id}
                 character={character}
                 setPlayerCharacter={setPlayerCharacter}
                 setAiCharacter={setAiCharacter}
@@ -59,6 +61,7 @@ export default function CharacterSelect() {
           })}
         </ul>
       </div>
+
       <div className="character-select__selected-characters">
         <div className="selected-characters__player1">
           <CharacterInfoCard character={playerCharacter} />
@@ -72,12 +75,14 @@ export default function CharacterSelect() {
           <CharacterInfoCard character={aiCharacter} />
         </div>
       </div>
+
       <div className="character-select__play-button-container">
         <button className="character-select__play-button"
         onClick={() => handleFight()}>
           FIGHT
           </button>
       </div>
+
     </div>
   );
 }
