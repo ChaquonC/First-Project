@@ -1,0 +1,15 @@
+.WIP {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.WIP > img {
+    height: 30%;
+    width: 30%;
+}

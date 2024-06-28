@@ -8,6 +8,7 @@ from .Config import Config
 from .models import db, User
 from .seeds import seed_commands
 from .api import auth_routes, user_routes, character_routes
+# from .socket import socketio
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 app.config.from_object(Config)
@@ -27,6 +28,7 @@ app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(character_routes, url_prefix='/api/characters')
+# socketio.init_app(app)
 db.init_app(app)
 Migrate(app,db)
 

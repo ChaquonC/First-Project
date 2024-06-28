@@ -1,0 +1,154 @@
+.PVP__div {
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 100px;
+    gap: 100px;
+
+    background-image: url('../../../images/battleBackground.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .PVP__player1-div,
+  .PVP__player2-div {
+      width: 80%;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+  }
+
+  .PVP__player1-hp-div,
+  .PVP__player2-hp-div {
+      background-color: darkgrey;
+      padding: 10px;
+      background-size: auto;
+      margin: 0;
+      height: min-content;
+  }
+
+
+  .PVP__character-name {
+    font-size: 20px;
+    color: white;
+  }
+
+  .PVP__health-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 200px;
+
+  }
+
+  /* Player2 CSS */
+  .PVP__player2-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 40%;
+    padding-right: 40%;
+  }
+
+  .PVP__player2-hp-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .PVP__player2-hp-parent {
+    width: 150px;
+    height: 5px;
+    background-color: grey;
+  }
+
+  .PVP__player2-sprite {
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+  }
+
+  /* Player1 CSS */
+
+  .PVP__player1-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 40%;
+    padding-right: 40%;
+  }
+
+  .PVP__player1-hp-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .PVP__player1-hp-parent {
+    width: 150px;
+    height: 5px;
+    background-color: grey;
+  }
+
+  .PVP__player1-sprite {
+    border-radius: 100%;
+    height: 150px;
+    width: 150px;
+  }
+
+  .PVP__player1-hp-display {
+    color: white;
+    font-weight: bold;
+  }
+
+  .PVP__player-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: linear-gradient(#428bca, #337ab7);
+    border-radius: 10px;
+    margin-bottom: 53px;
+  }
+
+  .PVP__player-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .PVP__what-will {
+      font-size: 30px;
+      color: white;
+  }
+
+  .PVP__player-move1,
+  .PVP__player-move2,
+  .PVP__player-heal {
+      border: white 2px solid;
+      color: white;
+      padding: 12px 19px;
+      border-radius: 15px;
+      font-weight: bolder;
+      font-size: 15px;
+  }
+
+  .PVP__player-move1 {
+      background-color: red;
+  }
+
+  .PVP__player-move2 {
+      background-color: blue;
+  }
+
+  .PVP__player-heal {
+      background-color: green;
+  }
+
+
+
+  .PVP__player-move1:hover,
+  .PVP__player-move2:hover,
+  .PVP__player-heal:hover {
+      background-color: lightblue;
+  }

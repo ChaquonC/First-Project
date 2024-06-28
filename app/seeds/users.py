@@ -10,17 +10,17 @@ def seed_users():
     demo2 = User(
         username="John Marston",
         email="johncowboy@gmail.com",
-        password="reddead"
+        password="password123"
     )
     demo3 = User(
         username="Black Man",
         email="blackman@gmail.com",
-        password="kirbyTheEater!"
+        password="password123"
     )
     demo4 = User(
         username="Draconify the Great",
         email="notafurry@gmail.com",
-        password="greatestofalltime47"
+        password="password123"
     )
 
     db.session.add(demo)

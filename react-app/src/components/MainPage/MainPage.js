@@ -10,8 +10,11 @@ import GameSelector from "../GameSelector/GameSelector";
 import ManageCharacters from "../ManageCharacters";
 import CharacterSelect from "../GameModes/PlayerVsAi/CharacterSelect";
 import PlayerCharacterSelect from "../GameModes/PlayerVPlayer/PlayerCharacterSelect";
-import About from "../About"
+import About from "../About";
 import PVABattle from "../GameModes/PlayerVsAi/PVABattle";
+import PVPBattle from "../GameModes/PlayerVPlayer/PVPBattle";
+import LobbySelect from "../GameModes/OnlinePVP/LobbySelect";
+import sleepy from "../../images/KirbySleep.png";
 
 export default function MainPage() {
   const user = useSelector((state) => state.session.user);
@@ -32,7 +35,17 @@ export default function MainPage() {
           <Route path="/main/gamemode2/select">
             <PlayerCharacterSelect />
           </Route>
-          <Route path="/main/gamemode3"></Route>
+          <Route path="/main/gamemode2/battle">
+            <PVPBattle />
+          </Route>
+          <Route path="/main/gamemode3/select">
+            {/* Work in progress if we get back to it. */}
+            {/* <LobbySelect /> */}
+            <div className="WIP">
+              <span>Feature Coming Soon</span>
+              <img src={sleepy} />
+            </div>
+          </Route>
           <Route path="/main/about">
             <About />
           </Route>

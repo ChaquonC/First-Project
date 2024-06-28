@@ -1,15 +1,17 @@
 import "./PVABattle.css";
 import { useSelector } from "react-redux";
-import "./CharacterSelect.css";
 import { useEffect, useState } from "react";
 import { damageTaken, heal, turnDelay } from "../../../Utlities";
 import VictoryCard from "../InfoCard/VictoryCard";
 import StandAloneModal from "../../StandAloneModal";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 export default function PVABattle() {
   const characters = useSelector((state) => state.character.battling);
 
+  const history = useHistory();
   const [player, setPlayer] = useState();
-  const [playerHealthbarColor, setPlayerHealthbarColor] = useState("blue");
+  const [playerHealthbarColor, setPlayerHealthbarColor] = useState("#8aff9e");
   const [playerHealthPercentage, setPlayerHealthPercentage] = useState();
   const [playerCurrentHealth, setPlayerCurrentHealth] = useState();
   const [playerHealsLeft, setPlayerHealsLeft] = useState(2);
@@ -19,7 +21,7 @@ export default function PVABattle() {
   const [ai, setAi] = useState();
   const [aiHealthPercentage, setAIHealthPercentage] = useState();
   const [aiCurrentHealth, setAiCurrentHealth] = useState();
-  const [aiHealthbarColor, setAIHealthbarColor] = useState("blue");
+  const [aiHealthbarColor, setAIHealthbarColor] = useState("#8aff9e");
   const [aiHealsleft, setAIHealsLeft] = useState(2);
   const [aiTotalHp, setAiTotalHp] = useState();
 
@@ -27,29 +29,37 @@ export default function PVABattle() {
   const [winner, setWinner] = useState();
 
   useEffect(() => {
-    setPlayer(characters.player1);
-    setAi(characters.player2);
-    setPlayerCurrentHealth(characters.player1.stats.hp);
-    setAiCurrentHealth(characters.player2.stats.hp);
-    setPlayerTotalHp(characters.player1.stats.hp);
-    setAiTotalHp(characters.player2.stats.hp);
+    if (Object.values(characters).length === 0) {
+      history.push("/main/gamemode1/select");
+    } else {
+      setPlayer(characters.player1);
+      setAi(characters.player2);
+      setPlayerCurrentHealth(characters.player1.stats.hp);
+      setAiCurrentHealth(characters.player2.stats.hp);
+      setPlayerTotalHp(characters.player1.stats.hp);
+      setAiTotalHp(characters.player2.stats.hp);
+    }
   }, [characters]);
 
   useEffect(() => {
-    if (playerHealthPercentage > 0.5) {
-      setPlayerHealthbarColor("blue");
-    } else if (playerHealthPercentage <= 0.5 && playerHealthPercentage > 0.25) {
-      setPlayerHealthbarColor("yellow");
-    } else if (playerHealthPercentage <= 0.25) {
-      setPlayerHealthbarColor("red");
+    if (playerHealthPercentage > 0.8) {
+      setPlayerHealthbarColor("#8aff9e");
+    } else if (playerHealthPercentage > 0.5) {
+      setPlayerHealthbarColor("#43a047");
+    } else if (playerHealthPercentage > 0.2) {
+      setPlayerHealthbarColor("#fbc02d");
+    } else {
+      setPlayerHealthbarColor("#df0030");
     }
 
-    if (aiHealthPercentage > 0.5) {
-      setAIHealthbarColor("blue");
-    } else if (aiHealthPercentage <= 0.5 && aiHealthPercentage > 0.25) {
-      setAIHealthbarColor("yellow");
-    } else if (aiHealthPercentage <= 0.25) {
-      setAIHealthbarColor("red");
+    if (aiHealthPercentage > 0.8) {
+      setAIHealthbarColor("#8aff9e");
+    } else if (aiHealthPercentage > 0.5) {
+      setAIHealthbarColor("#43a047");
+    } else if (aiHealthPercentage > 0.2) {
+      setAIHealthbarColor("#fbc02d");
+    } else {
+      setAIHealthbarColor("#df0030");
     }
   }, [playerHealthPercentage, aiHealthPercentage]);
 
@@ -57,11 +67,11 @@ export default function PVABattle() {
     setPlayerHealthPercentage(playerCurrentHealth / playerTotalHp);
     setAIHealthPercentage(aiCurrentHealth / aiTotalHp);
     if (aiCurrentHealth <= 0) {
-        console.log("ai loses")
+      console.log("ai loses");
       setWinner(player);
       setGameIsOver(true);
     } else if (playerCurrentHealth <= 0) {
-        console.log("player loses")
+      console.log("player loses");
       setWinner(ai);
       setGameIsOver(true);
     }
@@ -73,7 +83,7 @@ export default function PVABattle() {
     ai,
     player,
     winner,
-    gameIsOver
+    gameIsOver,
   ]);
 
   const aiBehavior = async () => {
@@ -126,30 +136,60 @@ export default function PVABattle() {
   if (!player || !ai) {
     return <h1>LOADING</h1>;
   }
+
   return (
     <div className="PVA__div">
-      <div className="player1-battlecard__div">
-        <div className="player1-battlecard__sprite-healthbar">
-          <img
-            className="player1-battlecard__sprite"
-            src={player.sprite}
-            alt=""
-          />
-          <div className="player1-battlecard__healthbar-full">
-            <div
-              className="player1-battlecard__healthbar-variable"
-              style={{
-                color: "white",
-                width: `${playerHealthPercentage * 100}%`,
-                backgroundColor: `${playerHealthbarColor}`,
-              }}
-            >
-              HEALTH: {playerCurrentHealth}
+      <div className="PVA__health-display">
+        <div className="PVA__enemy-div">
+          <div className="PVA__enemy-hp-div">
+            <span className="PVA__character-name">{ai.name}</span>
+            <div className="PVA__enemy-hp-parent">
+              <div
+                className="PVA__enemy-hp-son"
+                style={{
+                  color: "white",
+                  width: `${aiHealthPercentage * 100}%`,
+                  height: "100%",
+                  backgroundColor: `${aiHealthbarColor}`,
+                }}></div>
             </div>
           </div>
+
+          <img className="PVA__enemy-sprite" src={ai.sprite} alt="" />
         </div>
-        <div className="player1-battlecard__buttons">
+
+        <div className="PVA__player-div">
+          <img className="PVA__player-sprite" src={player.sprite} alt="" />
+
+          <div className="PVA__player-hp-div">
+            <span className="PVA__character-name">{player.name}</span>
+            <div className="PVA__player-hp-parent">
+              <div
+                className="PVA__player-hp-son"
+                style={{
+                  color: "white",
+                  width: `${playerHealthPercentage * 100}%`,
+                  height: "100%",
+                  backgroundColor: `${playerHealthbarColor}`,
+                }}></div>
+            </div>
+            <span className="PVA__player-hp-display">
+              {Math.floor(playerCurrentHealth)} / {player.stats.hp}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <StandAloneModal
+        openOnLoad={gameIsOver}
+        modalComponent={<VictoryCard character={winner} />}
+      />
+
+      <div className="PVA__player-options">
+        <div className="PVA__what-will">What will {player.name} do?</div>
+        <div className="PVA__player-buttons">
           <button
+            className="PVA__player-move1"
             disabled={!playerTurn}
             onClick={() => {
               if (playerTurn) {
@@ -158,11 +198,11 @@ export default function PVABattle() {
                 );
                 setPlayerTurn(false);
               }
-            }}
-          >
+            }}>
             {player.move1.name}
           </button>
           <button
+            className="PVA__player-move2"
             disabled={!playerTurn}
             onClick={() => {
               if (playerTurn) {
@@ -171,11 +211,11 @@ export default function PVABattle() {
                 );
                 setPlayerTurn(false);
               }
-            }}
-          >
+            }}>
             {player.move2.name}
           </button>
           <button
+            className="PVA__player-heal"
             disabled={!playerTurn}
             onClick={() => {
               if (playerHealsLeft > 0 && playerTurn) {
@@ -183,33 +223,9 @@ export default function PVABattle() {
                 setPlayerHealsLeft(playerHealsLeft - 1);
                 setPlayerTurn(false);
               }
-            }}
-          >
+            }}>
             HEAL ({playerHealsLeft} left)
           </button>
-        </div>
-      </div>
-      {/* {gameIsOver && player.stats.hp <= 0 ? <></> : <></>} */}
-      <StandAloneModal
-        openOnLoad={gameIsOver}
-        modalComponent={<VictoryCard character={winner} />}
-      />
-
-      <div className="player2-battlecard__div">
-        <div className="player2-battlecard__sprite-healthbar">
-          <img className="player2-battlecard__sprite" src={ai.sprite} alt="" />
-          <div className="player2-battlecard__healthbar-full">
-            <div
-              className="player2-battlecard__healthbar-variable"
-              style={{
-                color: "white",
-                width: `${aiHealthPercentage * 100}%`,
-                backgroundColor: `${aiHealthbarColor}`,
-              }}
-            >
-              HEALTH: {aiCurrentHealth}
-            </div>
-          </div>
         </div>
       </div>
     </div>
