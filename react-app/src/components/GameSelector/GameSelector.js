@@ -5,7 +5,7 @@ export default function GameSelector() {
     const history = useHistory();
     const handleGame1 = () => {history.push("/main/gamemode1/select")}
     const handleGame2 = () => {history.push("/main/gamemode2/select")}
-    const handleGame3 = () => {history.push("/main/gamemode3")}
+    const handleGame3 = () => {history.push("/main/gamemode3/select")}
     const handleManageCharacters = () => {history.push("/main/manage-characters")}
   return (
     <div className="game-selector">

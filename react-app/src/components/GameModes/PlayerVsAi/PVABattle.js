@@ -174,7 +174,7 @@ export default function PVABattle() {
                 }}></div>
             </div>
             <span className="PVA__player-hp-display">
-            {Math.floor(playerCurrentHealth)} / {player.stats.hp}
+              {Math.floor(playerCurrentHealth)} / {player.stats.hp}
             </span>
           </div>
         </div>
